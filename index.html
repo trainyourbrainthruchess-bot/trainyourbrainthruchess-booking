@@ -571,8 +571,10 @@ header.site{
 .email-preview{text-align:left;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:13px;color:#4a4038;margin-top:10px;}
 .email-preview .subj{font-weight:700;color:var(--ink);margin-bottom:6px;}
 .notice{background:#fff7f1;border:1px solid var(--terracotta-soft);color:#8a3d0c;font-size:12.5px;padding:10px 14px;border-radius:9px;margin-top:14px;}
-.consent-check{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:#4a4038;margin-top:16px;line-height:1.5;cursor:pointer;}
-.consent-check input{margin-top:2px;flex-shrink:0;}
+.consent-notes{background:var(--cream-soft);border:1px solid var(--line);border-radius:9px;padding:11px 14px;font-size:12px;color:#4a4038;line-height:1.55;margin-top:14px;}
+.consent-notes b{color:var(--ink);}
+.consent-check{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#4a4038;margin-top:10px;line-height:1.5;cursor:pointer;flex-wrap:wrap;}
+.consent-check input{flex-shrink:0;width:16px;height:16px;margin:0;cursor:pointer;}
 .consent-check a{color:var(--terracotta);}
 
 @media(max-width:900px){
@@ -907,9 +909,10 @@ header.site{
       </div>
       <div class="field full"><label>Message / additional notes</label><textarea id="cMessage" rows="3"></textarea></div>
       <div class="field full">
+        <div class="consent-notes"><b>Important:</b> your information is used only to respond to your enquiry and manage any resulting booking — it is not sold or shared with third parties. Where a booking follows, cancellations or rescheduling require at least 3 days' notice, and fees become non-refundable once a course has started.</div>
         <label class="consent-check">
           <input type="checkbox" id="cConsent" required>
-          I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
+          I agree to the Privacy Policy and Terms &amp; Conditions.
         </label>
       </div>
       <div class="field full form-actions">
@@ -933,8 +936,6 @@ header.site{
 <!-- ============ FOOTER ============ -->
 <footer class="footer-minimal">
   © 2026 Train Your Brain Chess Academy&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved
-  &nbsp;&nbsp;|&nbsp;&nbsp;<a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>
-  &nbsp;&nbsp;|&nbsp;&nbsp;<a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>
 </footer>
 
 <!-- ============ BOOKING MODAL ============ -->
@@ -1062,10 +1063,10 @@ const LOCATION_SCHEDULE = {
   },
   "Club S \u2014 Villette": {
     2: [
-      { time: "5:00 PM \u2013 6:30 PM", programId: "kids", label: "\ud83d\udd35 Kids Chess Program" },
-      { time: "7:00 PM \u2013 9:00 PM", programId: "couples", label: "\ud83d\udc9c Chess Date Night" },
-      { time: "7:00 PM \u2013 10:00 PM", programId: "mental_fitness", label: "\u2615 Mental Fitness Club" }
+      { time: "5:00 PM \u2013 6:30 PM", programId: "kids", label: "\ud83d\udd35 Kids Chess Program" }
     ]
+    // Chess Date Night and Mental Fitness Club previously ran here Tuesday evenings —
+    // now request-only, see LOCATION_SCHEDULE_PROGRAMS above.
     // Sun/Mon/Wed/Thu: not offered at Villette. Fri/Sat: weekend sessions TBA.
   },
   "Club S \u2014 Allegria": {
@@ -1099,12 +1100,16 @@ const LOCATION_SCHEDULE = {
 // not "unmentioned." Sports Performance and Corporate never touch the calendar at all
 // (enquiry-only); Empowering Women's Cairo option is also enquiry-only (see PROGRAMS).
 const LOCATION_SCHEDULE_PROGRAMS = {
-  "Club S \u2014 Westown": new Set(["kids", "tournament", "mental_fitness", "couples"]),
-  "Club S \u2014 Villette": new Set(["kids", "tournament", "mental_fitness", "couples"]),
-  "Club S \u2014 Allegria": new Set(["kids", "tournament", "mental_fitness", "couples"]),
+  "Club S \u2014 Westown": new Set(["kids", "tournament"]),
+  "Club S \u2014 Villette": new Set(["kids", "tournament"]),
+  "Club S \u2014 Allegria": new Set(["kids", "tournament"]),
   "Online \u2014 Live via Google Meet": new Set(["online", "tournament"]),
   "Berlin \u2014 Motel One, Invalidenstra\u00dfe 54": new Set(["empowering"])
 };
+// Chess Date Night (couples) and Mental Fitness Club currently have no confirmed
+// schedule slots — this falls through to the request-only flow (hasAnyAvailability()
+// returns false, so the booking wizard shows "send us your preferred dates" instead
+// of a calendar). See LOCATION_SCHEDULE above for their previous Villette Tuesday slots.
 
 
 // ---------- Programs ----------
@@ -1191,13 +1196,13 @@ const PROGRAMS = [
     duration: "2 hours",
     title: "Chess Date Night",
     ageRange: "Ages 30+ \u00b7 Pairs",
-    status: "open",
+    status: "by_request",
     forWhom: "For couples who want a different kind of date night.",
     image: IMG.couples,
     feeEGP: 900,
     feeUnit: "per couple",
     singleSession: true,
-    cantAttendNote: "Can't attend Tuesday? Send us your preferred day and time \u2014 if enough participants are interested, we'll open another group.",
+    cantAttendNote: "No fixed sessions on the calendar right now \u2014 send us your preferred day and time and we'll confirm availability.",
     tagline: "A different kind of date night.",
     description: "A relaxed one-on-one chess evening for couples over coffee \u2014 no chess experience needed. It's a different kind of date that reveals how you each think, communicate and handle pressure, together, over a shared board.",
     whatYouDo: ["Guided chess session for two", "Reflection prompts on communication", "Coffee & conversation", "No experience necessary"],
@@ -1210,13 +1215,14 @@ const PROGRAMS = [
     duration: "3 hours",
     title: "Mental Fitness Club",
     ageRange: "35+ Community",
-    status: "open",
+    status: "by_request",
     forWhom: "For adults 35+ who want to improve thinking, decision making, and meet like-minded people.",
     image: IMG.mental_fitness,
     imgPosition: "top",
     feeEGP: null,
     feeLabel: "Membership details \u2014 Coming Soon (TBA)",
     singleSession: true,
+    cantAttendNote: "No fixed sessions on the calendar right now \u2014 send us your preferred day and time and we'll confirm availability.",
     tagline: "Strategy, connection, self-discovery.",
     description: "Tuesday evening coffee-and-chess socials for the 35+ community. Structured games \u2014 including cooperative formats like hand-and-brain, where partners think through a position together \u2014 mixed with guided conversation, real connection, and good coffee. Come for the strategy, stay for the company.",
     whatYouDo: ["Group chess & hand-and-brain games", "Guided conversation prompts", "Good coffee, good company", "All levels welcome"],
@@ -1279,8 +1285,8 @@ const PROGRAMS = [
     levels: ["Beginner", "Intermediate", "Advanced"],
     image: IMG.online,
     fixedFee: true,
-    feeEGP: 1800,
-    feeEUR: 40,
+    feeEGP: 1400,
+    feeEUR: 60,
     multiCurrency: true, // accepts both EGP (InstaPay) and EUR (PayPal/Revolut) — see paymentMethodsFor() in app.js
     cadenceText: "4 sessions per month · 1 hour each",
     tagline: "A weekly online class for every level.",
@@ -1778,12 +1784,14 @@ function getSlotsForDate(program, dateObj, location) {
 // Deterministic "remaining spots" simulation (0–8) so the demo calendar looks realistic.
 // Once connected to Google Calendar, this is replaced by a real headcount from the event.
 function getRemaining(dateStr, programId, slot, location) {
+  if (programId === "empowering") return MAX_GROUP_SIZE; // no real bookings yet — all 8 places open
   const h = hashStr(dateStr + "|" + programId + "|" + slot + "|" + (location || ""));
   return h % (MAX_GROUP_SIZE + 1); // 0 = booking closed, 1–8 = spots left
 }
-function remainingLabel(remaining) {
+function remainingLabel(remaining, programId) {
   if (remaining === 0) return "Booking Closed";
   if (remaining === 1) return "Almost Full \u2014 Contact us to check availability";
+  if (programId === "empowering") return `${remaining} places left`;
   return `${remaining} places available`;
 }
 
@@ -1872,10 +1880,10 @@ function renderStep() {
 
 // ---------- Step 2 (request mode): no fixed schedule — ask for a preferred date & time ----------
 function renderStepRequest(program) {
-  modalTitle.textContent = "Request a date & time";
+  modalTitle.textContent = "Send us your preferred dates";
   modalBody.innerHTML = `
     <p style="font-family:var(--mono);font-size:12px;color:var(--ink-2);margin-bottom:14px;">${state.selectedLocation}</p>
-    <div class="notice" style="margin-bottom:18px;">This program doesn't run on a fixed weekly schedule right now. Pick a date and time that works for you, and our team will confirm availability within 24 hours.</div>
+    <div class="notice" style="margin-bottom:18px;">There are no open slots on the public schedule for this program right now. Send us your preferred date and time and our team will confirm availability within 24 hours.</div>
     <div class="field" style="margin-bottom:14px;">
       <label>Preferred date</label>
       <input type="date" id="reqDate" min="${todayISO()}" value="${state.selectedDateStr || ""}">
@@ -1989,9 +1997,10 @@ function renderPrivateSessionForm(program) {
       <label>Additional notes</label>
       <textarea id="psNotes" rows="2"></textarea>
     </div>
+    <div class="consent-notes"><b>Important:</b> your information is used only to arrange this session and communicate with you — it is not sold or shared with third parties. Cancellations or rescheduling require at least 3 days' notice, and fees become non-refundable once a course has started.</div>
     <label class="consent-check">
       <input type="checkbox" id="psConsentCheck">
-      I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
+      I agree to the Privacy Policy and Terms &amp; Conditions.
     </label>
     <p id="psMsg" style="font-size:12.5px;color:#8a3d0c;font-family:var(--mono);margin-top:10px;"></p>
   `;
@@ -2107,7 +2116,7 @@ function renderStepSlot(program) {
         <span class="slot-time">${s.time}</span>
         <span class="slot-sub">${s.label} · ${state.selectedLocation}</span>
       </span>
-      <span class="tag ${full ? "tag-full" : almostFull ? "tag-limited" : "tag-open"}">${full ? "Join Waiting List" : remainingLabel(remaining)}</span>
+      <span class="tag ${full ? "tag-full" : almostFull ? "tag-limited" : "tag-open"}">${full ? "Join Waiting List" : remainingLabel(remaining, program.id)}</span>
     </button>`;
   }).join("");
 
@@ -2192,12 +2201,22 @@ function paymentMethodsFor(currency, subjectContext) {
 }
 
 window.copyPayHandle = function (text, btn) {
-  const original = btn.textContent;
-  const done = (ok) => { btn.textContent = ok ? "Copied!" : "Couldn't copy \u2014 long-press to copy"; setTimeout(() => { btn.textContent = original; }, 1800); };
+  // navigator.clipboard.writeText() silently fails outside secure contexts (HTTPS/
+  // localhost) — e.g. a file opened directly, or previewed in a sandboxed frame. A
+  // prompt() with the value pre-selected works everywhere with no special permissions,
+  // and still keeps the account off the page until this is clicked.
+  let copied = false;
   if (navigator.clipboard && navigator.clipboard.writeText) {
-    navigator.clipboard.writeText(text).then(() => done(true)).catch(() => done(false));
-  } else {
-    done(false);
+    try {
+      navigator.clipboard.writeText(text);
+      copied = true;
+    } catch (err) { copied = false; }
+  }
+  window.prompt("Your payment details — copy this and paste it into your banking/PayPal app:", text);
+  if (copied) {
+    const original = btn.textContent;
+    btn.textContent = "Copied!";
+    setTimeout(() => { btn.textContent = original; }, 1800);
   }
 };
 function payHereHtml(entry) {
@@ -2435,7 +2454,7 @@ function renderStepConfirm(program) {
       <div class="row"><span>Participant</span><b>${escapeHtml(state.form.participantName)}${state.form.participantAge ? ", age " + escapeHtml(state.form.participantAge) : ""}</b></div>
       ${state.form.contactName ? `<div class="row"><span>Contact</span><b>${escapeHtml(state.form.contactName)}</b></div>` : ""}
       ${!program.singleSession ? `<div class="row"><span>Sessions</span><b>${escapeHtml(state.form.sessions)}${state.form.continuing ? " (continuing \u2014 10% off)" : ""}</b></div>` : ""}
-      <div class="row"><span>Fee</span><b>${formatMoney(feeInCurrency(program, state.currency), state.currency, program.feeLabel)} via ${(PAYMENT_METHODS[state.currency].find(m => m.id === state.method) || {}).label || ""}</b></div>
+      <div class="row"><span>Fee</span><b>${formatMoney(feeInCurrency(program, state.currency), state.currency, program.feeLabel)} via ${state.method || ""}</b></div>
       <div class="row"><span>Payment receipt</span><b>${escapeHtml(state.receiptFileName || "")}</b></div>
     </div>
     ${state.requestMode ? `<div class="notice">This time is a request, not a confirmed slot. Our team will check availability and get back to you within 24 hours to confirm.</div>` : ""}
@@ -2443,9 +2462,10 @@ function renderStepConfirm(program) {
     ${state.selectedLocation === ONLINE_LOCATION
       ? `<div class="notice">This is an online session. Once confirmed on our calendar, a Google Meet link is generated automatically and emailed to you.</div>`
       : `<div class="notice">This is an in-person session at ${state.selectedLocation}. It will be added to our calendar with that location — no video link is needed.</div>`}
+    <div class="consent-notes"><b>Important:</b> your information is used only to manage this booking and communicate with you — it is not sold or shared with third parties. Cancellations or rescheduling require at least 3 days' notice, and fees become non-refundable once a course has started.</div>
     <label class="consent-check">
       <input type="checkbox" id="consentCheck" onchange="document.getElementById('confirmBtn').disabled = !this.checked;">
-      I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
+      I agree to the Privacy Policy and Terms &amp; Conditions.
     </label>
     <p id="confirmMsg" style="font-size:12.5px;color:#8a3d0c;font-family:var(--mono);margin-top:10px;"></p>
   `;
@@ -2904,9 +2924,10 @@ function renderTournStepConfirm(t) {
       <div class="row"><span>Payment proof</span><b>${escapeHtml(tournState.proofFileName || "")}</b></div>
     </div>
     <div class="notice">Confirmation will be sent after registration with your tournament link.</div>
+    <div class="consent-notes"><b>Important:</b> your information is used only to manage this registration and communicate with you — it is not sold or shared with third parties. Entry fees are non-refundable once the tournament has started.</div>
     <label class="consent-check">
       <input type="checkbox" id="tournConsentCheck" onchange="document.getElementById('tournConfirmBtn').disabled = !this.checked;">
-      I agree to the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a> and <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.
+      I agree to the Privacy Policy and Terms &amp; Conditions.
     </label>
     <p id="tournConfirmMsg" style="font-size:12.5px;color:#8a3d0c;font-family:var(--mono);margin-top:10px;"></p>
   `;
