@@ -117,6 +117,21 @@ header.site{
 }
 .hero h1 em{font-style:italic;color:var(--gold-soft);font-weight:500;}
 .hero p.lead{font-size:17.5px;color:rgba(246,234,220,0.82);max-width:520px;margin-bottom:30px;}
+.hero-sub{font-size:14px;font-weight:600;color:var(--gold-soft);margin-bottom:12px;letter-spacing:.01em;}
+.hero-skills{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:20px;}
+.hero-skill{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.02em;
+  color:var(--cream);background:rgba(246,234,220,0.08);border:1px solid rgba(232,206,126,0.4);
+  padding:7px 14px;border-radius:100px;
+}
+.hero-sub-note{font-size:14.5px;line-height:1.6;color:rgba(246,234,220,0.72);max-width:540px;margin-bottom:22px;}
+.hero-callout{
+  border-left:3px solid var(--terracotta);padding:4px 0 4px 18px;margin-bottom:30px;max-width:520px;
+}
+.hero-callout p{
+  font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.5;
+  color:var(--cream);font-weight:500;
+}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px;}
 .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
 .hero-stat b{display:block;font-family:var(--serif);font-size:26px;color:var(--gold-soft);}
@@ -632,6 +647,21 @@ header.site{
       <div class="eyebrow">Cognitive Agility Through Chess</div>
       <h1>Train Your Brain</h1>
       <p class="lead">Develop cognitive agility through the game of chess — eight programs for every age and goal. Explore the programs below, pick the one that fits, and book a time that works for you.</p>
+
+      <p class="hero-sub">Science-based, psychology-informed workshops that strengthen:</p>
+      <div class="hero-skills">
+        <span class="hero-skill">Focus</span>
+        <span class="hero-skill">Decision-Making</span>
+        <span class="hero-skill">Problem-Solving</span>
+        <span class="hero-skill">Emotional Intelligence</span>
+        <span class="hero-skill">Collaborative Thinking</span>
+      </div>
+      <p class="hero-sub-note">All through interactive, beginner-friendly chess experiences. Discover how a simple board can transform the way you think, communicate, and connect — on and beyond the chessboard.</p>
+
+      <div class="hero-callout">
+        <p>Chess is simply the medium — the real work happens in how an individual or a team thinks, communicates, and decides.</p>
+      </div>
+
       <div class="hero-actions">
         <a href="#programs" class="btn btn-primary">Explore Programs</a>
         <a href="#reviews" class="btn btn-ghost">Read Reviews</a>
