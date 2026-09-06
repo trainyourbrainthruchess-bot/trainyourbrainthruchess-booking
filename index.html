@@ -1173,6 +1173,7 @@ header.site{
 </section>
 
 <!-- ============ FIND YOUR BOARD / PATH / PEOPLE ============ -->
+<div id="fypAdminBar"></div>
 <section class="section personality-cta-section" id="find-system">
   <div class="wrap">
     <div class="fq-umbrella">
@@ -1196,7 +1197,7 @@ header.site{
         <div class="fq-pillar-title">Find Your People</div>
         <div class="fq-pillar-meta">3 minutes</div>
         <p class="fq-pillar-sub">Tell us what you&rsquo;re into, and we&rsquo;ll help place you with people who share your interests.</p>
-        <button type="button" class="btn btn-primary fq-pillar-btn" onclick="openFindYourPeople()">FIND YOUR PEOPLE</button>
+        <a href="#find-your-people" class="btn btn-primary fq-pillar-btn" onclick="event.preventDefault(); openFindYourPeople(); if(window.location.hash!=='#find-your-people'){history.pushState(null,'','#find-your-people');}" style="text-decoration:none;display:inline-block;box-sizing:border-box;">FIND YOUR PEOPLE</a>
       </div>
     </div>
   </div>
@@ -5042,7 +5043,7 @@ window.closeFindYourPeople = function () {
 function fypRenderEventPrompt() {
   const el = document.getElementById("fypModalInner");
   el.innerHTML = `
-    <div class="fyp-brand">Train Your Brain Chess Academy</div>
+    <div class="fyp-brand">Date Nights</div>
     <h1 class="fyp-prompt">Which event are you joining?</h1>
     <p class="fyp-sub">This helps us group your answers with the right event.</p>
     <div class="fyp-form-row"><input type="text" id="fypEventInput" placeholder="e.g. Strategy Night \u2014 October"></div>
@@ -5078,7 +5079,7 @@ function fypRender() {
   }
 
   el.innerHTML = `
-    <div class="fyp-brand">Train Your Brain Chess Academy</div>
+    <div class="fyp-brand">Date Nights</div>
     <div class="fyp-progress-track"><div class="fyp-progress-fill" style="width:${pct}%"></div></div>
     <div class="fyp-qnum">QUESTION ${fypState.step + 1} OF ${FYP_TOTAL_Q}</div>
     ${q.intro ? `<p class="fyp-intro">${q.intro}</p>` : ""}
@@ -5114,7 +5115,7 @@ window.fypBack = function () {
 function fypRenderContact() {
   const el = document.getElementById("fypModalInner");
   el.innerHTML = `
-    <div class="fyp-brand">Train Your Brain Chess Academy</div>
+    <div class="fyp-brand">Date Nights</div>
     <div class="fyp-progress-track"><div class="fyp-progress-fill" style="width:95%"></div></div>
     <h1 class="fyp-prompt">One last move.</h1>
     <div class="fyp-form-row"><label>First Name *</label><input type="text" id="fypName"></div>
@@ -5242,6 +5243,38 @@ function fypCheckDeepLink() {
 }
 fypCheckDeepLink();
 window.addEventListener("hashchange", fypCheckDeepLink);
+
+// ---------- Admin-only "Copy Link" utility ----------
+// Visible only with ?admin=1 in the URL — regular visitors never see this.
+// Lets the organizer generate and copy a shareable Find Your People link,
+// optionally tagged with an event name, for WhatsApp/Instagram/QR/email use.
+function fypInitAdminBar() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("admin") !== "1") return;
+  const bar = document.getElementById("fypAdminBar");
+  if (!bar) return;
+  bar.innerHTML = `
+    <div style="max-width:640px;margin:16px auto 0;background:var(--ink);color:var(--cream);border-radius:12px;padding:14px 18px;font-family:var(--mono);font-size:12px;">
+      <div style="opacity:.6;letter-spacing:.08em;margin-bottom:8px;">ADMIN \u2014 FIND YOUR PEOPLE LINK GENERATOR \u2014 not visible to visitors</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input type="text" id="fypAdminEventName" placeholder="event name (optional)" style="flex:1;min-width:160px;padding:8px 10px;border-radius:8px;border:none;font-family:var(--mono);font-size:12px;">
+        <button type="button" onclick="fypCopyAdminLink()" style="background:var(--terracotta);color:#fff;border:none;border-radius:8px;padding:8px 14px;font-family:var(--mono);font-size:12px;cursor:pointer;">Copy Link</button>
+      </div>
+      <div id="fypAdminMsg" style="margin-top:8px;opacity:.8;min-height:14px;word-break:break-all;"></div>
+    </div>
+  `;
+}
+window.fypCopyAdminLink = function () {
+  const base = window.location.origin + window.location.pathname;
+  const name = document.getElementById("fypAdminEventName").value.trim();
+  const url = name ? `${base}?event=${encodeURIComponent(name)}#find-your-people` : `${base}#find-your-people`;
+  navigator.clipboard.writeText(url).then(() => {
+    document.getElementById("fypAdminMsg").textContent = "Copied: " + url;
+  }).catch(() => {
+    document.getElementById("fypAdminMsg").textContent = url + " (copy manually \u2014 clipboard blocked)";
+  });
+};
+fypInitAdminBar();
 </script>
 </body>
 </html>
