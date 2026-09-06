@@ -726,6 +726,9 @@ header.site{
 @media(max-width:480px){
   .clock-settings-inner{padding:22px 18px;}
   .clock-preset-row button{padding:9px 13px;font-size:13px;}
+  .clock-time{font-size:clamp(34px,10vw,58px);}
+  .clock-player{padding:12px;}
+  .clock-player-inner{gap:6px;}
 }
 
 /* ============================================================
@@ -972,6 +975,85 @@ header.site{
   .personality-form-row{flex-direction:column;}
 }
 
+
+/* ============================================================
+   FIND YOUR BOARD / PATH / PEOPLE — three-pillars section
+   ============================================================ */
+.fq-umbrella{text-align:center;margin-bottom:38px;}
+.fq-umbrella-sub{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink-2);margin-top:10px;}
+.fq-pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.fq-pillar-card{
+  background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.fq-pillar-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
+.fq-pillar-glyphs{display:flex;justify-content:center;color:var(--terracotta);margin-bottom:16px;}
+.fq-pillar-title{font-family:var(--serif);font-weight:700;font-size:22px;color:var(--ink);margin-bottom:8px;}
+.fq-pillar-sub{font-family:var(--sans);font-size:14.5px;color:var(--ink-2);line-height:1.5;margin-bottom:20px;min-height:42px;}
+.fq-pillar-btn{width:100%;}
+.fq-pillar-meta{font-family:var(--mono);font-size:11.5px;color:var(--terracotta);letter-spacing:.04em;margin-top:10px;}
+@media(max-width:820px){.fq-pillars-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   FIND QUIZ — shared engine UI (Find Your Path / Find Your People)
+   ============================================================ */
+.fq-modal{max-width:560px;}
+.fq-inner{padding:44px 30px 34px;}
+.fq-progress-track{height:4px;background:var(--line);border-radius:100px;overflow:hidden;margin-bottom:22px;}
+.fq-progress-fill{height:100%;background:var(--gold);transition:width .3s ease;}
+.fq-question-num{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--terracotta);font-weight:700;margin-bottom:10px;}
+.fq-prompt{font-family:var(--serif);font-weight:700;font-size:25px;color:var(--ink);line-height:1.25;margin-bottom:6px;}
+.fq-sub{font-family:var(--sans);font-size:14px;color:var(--ink-2);margin-bottom:20px;}
+.fq-body{margin-top:18px;}
+.fq-cards{display:flex;flex-direction:column;gap:10px;}
+.fq-card{
+  text-align:left;font-family:var(--sans);font-size:15px;color:var(--ink);
+  background:var(--cream-soft);border:1.5px solid var(--line);border-radius:12px;
+  padding:15px 18px;cursor:pointer;transition:border-color .15s ease, background .15s ease;
+}
+.fq-card:hover{border-color:var(--gold);}
+.fq-card.active{background:var(--ink);border-color:var(--ink);color:var(--cream);}
+.fq-card-multi.active::after{content:" \2713";}
+.fq-continue{width:100%;margin-top:18px;padding:14px;}
+.fq-slider-wrap{padding:20px 4px 6px;}
+.fq-slider{width:100%;accent-color:var(--terracotta);}
+.fq-slider-labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:var(--ink-2);margin-top:8px;}
+.fq-textarea{
+  width:100%;font-family:var(--sans);font-size:14.5px;color:var(--ink);padding:14px;
+  border:1.5px solid var(--line);border-radius:12px;background:var(--cream-soft);resize:vertical;box-sizing:border-box;
+}
+.fq-nav{display:flex;justify-content:space-between;align-items:center;margin-top:18px;}
+.fq-back{background:none;border:none;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);cursor:pointer;padding:6px 0;}
+.fq-skip{background:none;border:none;font-family:var(--mono);font-size:12.5px;color:var(--terracotta);cursor:pointer;padding:6px 0;}
+
+/* Results */
+.fq-result{text-align:center;}
+.fq-result-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--terracotta);font-weight:700;margin-bottom:10px;}
+.fq-result-title{font-family:var(--serif);font-weight:700;font-size:28px;color:var(--ink);margin-bottom:16px;}
+.fq-result-why{font-family:var(--sans);font-size:15px;color:var(--ink-2);line-height:1.6;margin-bottom:24px;}
+.fq-result-table-desc{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--ink);line-height:1.4;margin:6px 0 26px;}
+.fq-result-card{
+  background:var(--cream-soft);border:1.5px solid var(--line);border-radius:14px;padding:22px;margin-bottom:20px;
+}
+.fq-result-card-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--terracotta);font-weight:700;margin-bottom:8px;}
+.fq-result-card-title{font-family:var(--serif);font-weight:700;font-size:19px;color:var(--ink);margin-bottom:14px;}
+.fq-also{margin-bottom:22px;}
+.fq-also-label{font-family:var(--mono);font-size:11px;color:var(--ink-2);margin-bottom:8px;}
+.fq-also-link{
+  display:inline-block;background:none;border:1px solid var(--line);border-radius:100px;
+  font-family:var(--sans);font-size:13px;color:var(--ink);padding:7px 16px;margin:0 4px 6px;cursor:pointer;
+}
+.fq-also-link:hover{border-color:var(--gold);}
+.fq-result-actions{display:flex;justify-content:center;gap:18px;margin-bottom:20px;}
+.fq-restart{background:none;border:none;font-family:var(--mono);font-size:12.5px;color:var(--ink-2);cursor:pointer;text-decoration:underline;}
+.fq-talk{font-family:var(--mono);font-size:12.5px;color:var(--terracotta);text-decoration:underline;}
+.fq-disclaimer{font-family:var(--sans);font-size:11.5px;color:rgba(23,19,16,0.4);line-height:1.5;padding-top:16px;border-top:1px solid var(--line);}
+
+@media(max-width:520px){
+  .fq-inner{padding:56px 20px 26px;}
+  .fq-prompt{font-size:21px;}
+}
 </style>
 </head>
 <body>
@@ -1050,18 +1132,58 @@ header.site{
   </div>
 </section>
 
-<!-- ============ CHESS PERSONALITY CTA ============ -->
-<section class="section personality-cta-section">
+<!-- ============ FIND YOUR BOARD / PATH / PEOPLE ============ -->
+<section class="section personality-cta-section" id="find-system">
   <div class="wrap">
-    <div class="personality-cta-card">
-      <div class="personality-cta-glyphs" aria-hidden="true">
-        <span>&#9823;</span><span>&#9822;</span><span>&#9821;</span><span>&#9820;</span><span>&#9819;</span><span>&#9818;</span>
+    <div class="fq-umbrella">
+      <div class="eyebrow" style="text-align:center;">Find Your Board. Find Your Path. Find Your People.</div>
+      <p class="fq-umbrella-sub">Understand how you think. Choose how you want to grow. Find people worth sharing the table with.</p>
+    </div>
+    <div class="fq-pillars-grid">
+      <div class="fq-pillar-card">
+        <div class="fq-pillar-glyphs" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="30" height="30">
+            <path d="M9 27h14M10.5 27l0.3-4.5h10.4l0.3 4.5"/>
+            <path d="M10.8 22.5c-0.8-3 0-5.5 1.5-7 0.9-0.9 1-1.8 0.5-3-0.6-1.5-0.3-3 1-4 1.5-1.2 3.5-1.5 5-0.5 0.8 0.5 1 1.3 0.5 2-0.4 0.5-1 0.6-1.5 0.4-0.6-0.2-1.2 0-1.4 0.6-0.3 0.7 0.1 1.3 0.7 1.6 2 1 3.4 2.7 4 4.8 0.5 1.9 0.2 3.8-0.6 5.1"/>
+            <circle cx="16.3" cy="9.3" r="0.6" fill="currentColor" stroke="none"/>
+            <path d="M13.5 15.5c1.2 0.4 2.5 0.4 4-0.2"/>
+          </svg>
+        </div>
+        <div class="fq-pillar-title">Find Your Board</div>
+        <p class="fq-pillar-sub">Discover the patterns behind how you think, decide and approach the board.</p>
+        <button type="button" class="btn btn-primary fq-pillar-btn" onclick="openPersonalityQuiz()">FIND YOUR BOARD</button>
       </div>
-      <div class="personality-cta-eyebrow">A Little Self-Reflection</div>
-      <button type="button" class="personality-cta-btn" onclick="openPersonalityQuiz()">
-        Discover Your Chess Personality
-      </button>
-      <div class="personality-cta-sub">Which piece thinks like you?</div>
+      <div class="fq-pillar-card">
+        <div class="fq-pillar-glyphs" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="30" height="30">
+            <circle cx="7" cy="24" r="2.2"/>
+            <path d="M7 21.8 L7 16 L19 16"/>
+            <path d="M19 16 L25.5 9.5"/>
+            <path d="M19 16 L25.5 22.5"/>
+            <circle cx="25.5" cy="9.5" r="2.2"/>
+            <circle cx="25.5" cy="22.5" r="2.2"/>
+          </svg>
+        </div>
+        <div class="fq-pillar-title">Find Your Path</div>
+        <p class="fq-pillar-sub">Not sure where to start? A few thoughtful questions can help.</p>
+        <button type="button" class="btn btn-primary fq-pillar-btn" onclick="openFindYourPath()">FIND YOUR PATH</button>
+        <div class="fq-pillar-meta">2 minutes &middot; No right or wrong answers</div>
+      </div>
+      <div class="fq-pillar-card">
+        <div class="fq-pillar-glyphs" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" width="30" height="30">
+            <circle cx="10" cy="11" r="4"/>
+            <circle cx="22" cy="11" r="4"/>
+            <circle cx="16" cy="23" r="4"/>
+            <line x1="12.8" y1="14.3" x2="14.5" y2="19.5"/>
+            <line x1="19.2" y1="14.3" x2="17.5" y2="19.5"/>
+            <line x1="14" y1="11" x2="18" y2="11"/>
+          </svg>
+        </div>
+        <div class="fq-pillar-title">Find Your People</div>
+        <p class="fq-pillar-sub">Good conversations rarely start with &ldquo;so, what do you do?&rdquo;</p>
+        <a href="find-your-people.html" class="btn btn-primary fq-pillar-btn" style="text-decoration:none;display:inline-block;box-sizing:border-box;">FIND YOUR PEOPLE</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1414,6 +1536,13 @@ header.site{
   <div class="personality-modal">
     <button type="button" class="personality-close" onclick="closePersonalityQuiz()" aria-label="Close">&#10005;</button>
     <div class="personality-modal-inner" id="personalityModalInner"></div>
+  </div>
+</div>
+
+<div class="personality-overlay" id="findQuizOverlay">
+  <div class="personality-modal fq-modal">
+    <button type="button" class="personality-close" onclick="closeFindQuiz()" aria-label="Close">&#10005;</button>
+    <div class="fq-inner" id="findQuizInner"></div>
   </div>
 </div>
 
@@ -2080,6 +2209,363 @@ const PERSONALITY_TYPES = {
 const PERSONALITY_GROWTH_SKILLS = ["Focus", "Decision-Making", "Strategic Thinking", "Adaptability", "Emotional Regulation", "Confidence Under Pressure", "Problem-Solving", "Communication"];
 const PERSONALITY_DEFAULT_PSYCH_NOTE = "You are not one piece forever. We all move between pieces depending on context, stress, relationships, and life phase.\n\nThe power is awareness, not labeling.";
 
+
+// ============================================================
+// FIND YOUR PATH + FIND YOUR PEOPLE — data layer
+// Program-orientation & social-fit discovery tools.
+// NOT a psychological assessment. Rules-based, transparent,
+// fully editable scoring — no AI/LLM analysis of visitors.
+// Real program ids only (see PROGRAMS above): kids, tournament,
+// sports, couples, mental_fitness, empowering, corporate, online.
+// ============================================================
+
+// ---------- FIND YOUR PATH ----------
+const FIND_PATH_QUESTIONS = [
+  {
+    id: "who",
+    prompt: "Who are you looking for?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Myself", track: "self" },
+      { label: "My child", track: "child", score: { kids: 5 } },
+      { label: "My teenager", track: "child", score: { kids: 5 } },
+      { label: "Me and my child", track: "child", score: { kids: 5 } },
+      { label: "Me and my partner", track: "partner", score: { couples: 5 } },
+      { label: "My team / organization", track: "team", score: { corporate: 5 } },
+      { label: "I'm just exploring", track: "self" },
+    ],
+  },
+  {
+    id: "brings",
+    prompt: "What brings you here?",
+    sub: "Choose up to 3 — whatever sounds most like what you're looking for.",
+    type: "multi",
+    maxSelect: 3,
+    options: [
+      { label: "Learn or improve chess", score: { online: 2, kids: 1 } },
+      { label: "Give my mind a real workout", score: { mental_fitness: 3 } },
+      { label: "Improve focus and thoughtful decision-making", score: { mental_fitness: 2, tournament: 1 } },
+      { label: "Become calmer under pressure", score: { mental_fitness: 2 } },
+      { label: "Build confidence when facing challenges", score: { mental_fitness: 1, kids: 1 } },
+      { label: "Meet interesting people", score: { mental_fitness: 3 } },
+      { label: "Do something meaningful with my child", score: { kids: 3 } },
+      { label: "Try something different with my partner", score: { couples: 3 } },
+      { label: "Compete and improve performance", score: { tournament: 3 } },
+      { label: "Have an intellectually stimulating social experience", score: { mental_fitness: 3 } },
+      { label: "Develop strategic thinking", score: { online: 2, tournament: 1 } },
+      { label: "Help my child develop through structured play", score: { kids: 3 } },
+      { label: "Something else", score: {} },
+    ],
+  },
+  {
+    id: "experience",
+    prompt: "What kind of experience sounds best right now?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Structured learning", score: { online: 3 } },
+      { label: "Challenging games and problem-solving", score: { tournament: 2, mental_fitness: 1 } },
+      { label: "Conversation, games and meeting people", score: { mental_fitness: 3 } },
+      { label: "Competitive training", score: { tournament: 3 } },
+      { label: "One-to-one guidance", score: { online: 2 } },
+      { label: "A parent/child experience", score: { kids: 3 } },
+      { label: "A couple's experience", score: { couples: 3 } },
+      { label: "A team experience", score: { corporate: 3 } },
+      { label: "I'm not sure yet", score: {} },
+    ],
+  },
+  {
+    id: "difficulty",
+    prompt: "When something becomes difficult, what would you most like to get better at?",
+    sub: "This is just self-reflection — there's no right answer.",
+    type: "single",
+    options: [
+      { label: "Slowing down before deciding", score: { mental_fitness: 1 } },
+      { label: "Staying focused", score: { mental_fitness: 1 } },
+      { label: "Handling mistakes", score: { mental_fitness: 1 } },
+      { label: "Trying another strategy", score: { tournament: 1 } },
+      { label: "Thinking ahead", score: { tournament: 1 } },
+      { label: "Communicating what I'm thinking", score: { mental_fitness: 1 } },
+      { label: "Staying composed under time pressure", score: { tournament: 1 } },
+      { label: "Taking calculated risks", score: { tournament: 1 } },
+      { label: "I mainly want to have fun and challenge myself", score: { mental_fitness: 1 } },
+    ],
+  },
+  {
+    id: "environment",
+    prompt: "Which environment brings out your best?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Quiet and focused", score: { online: 1 } },
+      { label: "Friendly and social", score: { mental_fitness: 2 } },
+      { label: "Competitive", score: { tournament: 2 } },
+      { label: "Collaborative", score: { corporate: 1, couples: 1 } },
+      { label: "Reflective and conversational", score: { mental_fitness: 2 } },
+      { label: "A mix", score: {} },
+    ],
+  },
+  {
+    id: "familiarity",
+    prompt: "How familiar are you with chess?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Never played" },
+      { label: "Know how the pieces move" },
+      { label: "Beginner" },
+      { label: "Recreational player" },
+      { label: "Intermediate" },
+      { label: "Competitive player", score: { tournament: 1 } },
+      { label: "Not sure" },
+    ],
+  },
+  {
+    id: "worthit",
+    prompt: "What would make you leave a session thinking \u201cthat was worth my time\u201d?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "I learned something useful.", score: { online: 1 } },
+      { label: "I surprised myself.", score: { mental_fitness: 1 } },
+      { label: "I handled a challenge differently.", score: { mental_fitness: 1 } },
+      { label: "I had a meaningful conversation.", score: { mental_fitness: 1 } },
+      { label: "I met someone interesting.", score: { mental_fitness: 1 } },
+      { label: "I played better chess.", score: { tournament: 1 } },
+      { label: "I had fun and switched off from routine.", score: {} },
+      { label: "I understood something about how I think.", score: { mental_fitness: 1 } },
+    ],
+  },
+  {
+    id: "format",
+    prompt: "Format preference",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "In person" },
+      { label: "Online", score: { online: 2 } },
+      { label: "Either" },
+    ],
+  },
+];
+
+// Maps each real program to its result-card content.
+const FIND_PATH_RESULTS = {
+  kids: {
+    label: "ACTIVE FAMILY LEARNING",
+    program: "kids",
+    also: ["online"],
+  },
+  tournament: {
+    label: "COMPETITIVE EDGE",
+    program: "tournament",
+    also: ["mental_fitness"],
+  },
+  sports: {
+    label: "PEAK PERFORMANCE MINDSET",
+    program: "sports",
+    also: ["tournament"],
+  },
+  couples: {
+    label: "SOMETHING NEW, TOGETHER",
+    program: "couples",
+    also: ["mental_fitness"],
+  },
+  mental_fitness: {
+    label: "ACTIVE MINDS",
+    program: "mental_fitness",
+    also: ["online", "tournament"],
+  },
+  empowering: {
+    label: "COMMUNITY & CONFIDENCE",
+    program: "empowering",
+    also: ["mental_fitness"],
+  },
+  corporate: {
+    label: "TEAM COGNITIVE AGILITY",
+    program: "corporate",
+    also: ["mental_fitness"],
+  },
+  online: {
+    label: "LEARN AT YOUR OWN PACE",
+    program: "online",
+    also: ["mental_fitness"],
+  },
+};
+
+// ---------- FIND YOUR PEOPLE ----------
+// Real program pool for recommendations is intentionally narrow —
+// several event types in the original brief (Coffee Conversation,
+// Strategy Game Nights, 35+/50+ communities) are not yet real,
+// bookable pages on the site. Recommendations below point only to
+// programs that actually exist: mental_fitness, couples, tournament.
+const FIND_PEOPLE_QUESTIONS = [
+  {
+    id: "brings",
+    prompt: "What brings you here?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Meet new people", tag: "social" },
+      { label: "Interesting conversations", tag: "conversation" },
+      { label: "Games and intellectual challenge", tag: "cognitive" },
+      { label: "Expand my social circle", tag: "social" },
+      { label: "Try something outside my usual routine", tag: "curious" },
+      { label: "Dating / meeting someone", tag: "dating" },
+      { label: "Professional networking without the networking feel", tag: "conversation" },
+      { label: "Just curious", tag: "curious" },
+    ],
+  },
+  {
+    id: "evening",
+    prompt: "What kind of evening sounds most like you?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Coffee and a conversation that goes somewhere", tag: "conversation" },
+      { label: "Chess and strategy", tag: "cognitive" },
+      { label: "Board games and laughter", tag: "playful" },
+      { label: "Psychology and meaningful discussion", tag: "conversation" },
+      { label: "Competitive games", tag: "competitive" },
+      { label: "Collaborative challenges", tag: "cognitive" },
+      { label: "A mixture of all of these", tag: "mix" },
+    ],
+  },
+  {
+    id: "meeting",
+    prompt: "When meeting new people, I prefer\u2026",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Small groups", tag: "calm" },
+      { label: "One-to-one conversations", tag: "calm" },
+      { label: "A lively table", tag: "playful" },
+      { label: "Structured activities that make conversation easier", tag: "structured" },
+      { label: "I adapt depending on the group", tag: "mix" },
+    ],
+  },
+  {
+    id: "topics",
+    prompt: "Pick the conversations you'd actually stay for.",
+    sub: "Choose as many as you like.",
+    type: "multi",
+    maxSelect: 6,
+    options: [
+      { label: "Psychology & human behavior" },
+      { label: "Travel & cultures" },
+      { label: "Books & ideas" },
+      { label: "Business & entrepreneurship" },
+      { label: "Architecture, design & creativity" },
+      { label: "Technology & innovation" },
+      { label: "Art & film" },
+      { label: "Sport" },
+      { label: "Chess & strategy" },
+      { label: "Relationships & communication" },
+      { label: "Philosophy" },
+      { label: "Personal growth" },
+      { label: "Current ideas and society" },
+      { label: "Other" },
+    ],
+  },
+  {
+    id: "energy",
+    prompt: "Your ideal social energy:",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Calm and thoughtful", tag: "calm" },
+      { label: "Warm and conversational", tag: "conversation" },
+      { label: "Playful", tag: "playful" },
+      { label: "Competitive", tag: "competitive" },
+      { label: "Curious and intellectual", tag: "cognitive" },
+      { label: "Spontaneous", tag: "playful" },
+      { label: "A balance", tag: "mix" },
+    ],
+  },
+  {
+    id: "slider_depth",
+    prompt: "What do you enjoy more?",
+    sub: "",
+    type: "slider",
+    leftLabel: "Deep conversation",
+    rightLabel: "Playful interaction",
+  },
+  {
+    id: "slider_competition",
+    prompt: "And this?",
+    sub: "",
+    type: "slider",
+    leftLabel: "Cooperation",
+    rightLabel: "Friendly competition",
+  },
+  {
+    id: "structure",
+    prompt: "How much structure do you like when meeting new people?",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "Give me an activity \u2014 it makes things easier", tag: "structured" },
+      { label: "A little structure is good", tag: "structured" },
+      { label: "Let conversation happen naturally", tag: "calm" },
+      { label: "No preference", tag: "mix" },
+    ],
+  },
+  {
+    id: "language",
+    prompt: "Preferred language",
+    sub: "",
+    type: "single",
+    options: [
+      { label: "English" },
+      { label: "Arabic" },
+      { label: "English & Arabic" },
+      { label: "German" },
+      { label: "Other" },
+    ],
+  },
+  {
+    id: "background",
+    prompt: "What world do you spend most of your time in?",
+    sub: "Optional \u2014 this helps us group evenings better than an \u201cintellectual level\u201d ever could.",
+    type: "single",
+    optional: true,
+    options: [
+      { label: "Creative / design" },
+      { label: "Engineering / technology" },
+      { label: "Business / entrepreneurship" },
+      { label: "Education / academia" },
+      { label: "Healthcare / psychology" },
+      { label: "Finance / law" },
+      { label: "Arts / media" },
+      { label: "Sport / wellbeing" },
+      { label: "Other" },
+      { label: "Prefer not to say" },
+    ],
+  },
+  {
+    id: "age",
+    prompt: "Age range",
+    sub: "Used only for event planning \u2014 never to judge compatibility or intelligence.",
+    type: "single",
+    optional: true,
+    options: [
+      { label: "21\u201329" },
+      { label: "30\u201339" },
+      { label: "40\u201349" },
+      { label: "50\u201359" },
+      { label: "60+" },
+      { label: "Prefer not to say" },
+    ],
+  },
+  {
+    id: "hourtalk",
+    prompt: "What's something you could happily talk about for an hour?",
+    sub: "Optional \u2014 short answer.",
+    type: "text",
+    optional: true,
+  },
+];
 </script>
 <script>
 
@@ -4330,6 +4816,309 @@ function renderPersonalityConfirmation() {
   `;
 }
 
+
+// ============================================================
+// FIND YOUR PATH + FIND YOUR PEOPLE — shared quiz engine
+// One question at a time, progress bar, back/continue without
+// losing answers, transparent rules-based results. No LLM/API
+// psychological analysis, no clinical scoring.
+// ============================================================
+const findQuizState = { type: null, step: 0, answers: {} };
+
+window.openFindYourPath = function () {
+  findQuizState.type = "path";
+  findQuizState.step = 0;
+  findQuizState.answers = {};
+  document.getElementById("findQuizOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+  renderFindQuizStep();
+};
+window.openFindYourPeople = function () {
+  findQuizState.type = "people";
+  findQuizState.step = 0;
+  findQuizState.answers = {};
+  document.getElementById("findQuizOverlay").classList.add("open");
+  document.body.style.overflow = "hidden";
+  renderFindQuizStep();
+};
+window.closeFindQuiz = function () {
+  document.getElementById("findQuizOverlay").classList.remove("open");
+  document.body.style.overflow = "";
+};
+
+function findQuizQuestions() {
+  return findQuizState.type === "path" ? FIND_PATH_QUESTIONS : FIND_PEOPLE_QUESTIONS;
+}
+
+function renderFindQuizStep() {
+  const questions = findQuizQuestions();
+  const el = document.getElementById("findQuizInner");
+  const step = findQuizState.step;
+
+  if (step >= questions.length) {
+    renderFindQuizResults();
+    return;
+  }
+
+  const q = questions[step];
+  const total = questions.length;
+  const progressPct = Math.round((step / total) * 100);
+  const existing = findQuizState.answers[q.id];
+
+  let bodyHtml = "";
+  if (q.type === "single") {
+    bodyHtml = `<div class="fq-cards">${q.options
+      .map(
+        (opt) => `
+      <button type="button" class="fq-card ${existing === opt.label ? "active" : ""}" onclick="selectFindSingle('${q.id}','${opt.label.replace(/'/g, "\\'")}')">${opt.label}</button>`
+      )
+      .join("")}</div>`;
+  } else if (q.type === "multi") {
+    const selected = existing || [];
+    bodyHtml = `
+      <div class="fq-cards">${q.options
+        .map(
+          (opt) => `
+        <button type="button" class="fq-card fq-card-multi ${selected.includes(opt.label) ? "active" : ""}" onclick="toggleFindMulti('${q.id}','${opt.label.replace(/'/g, "\\'")}',${q.maxSelect || 99})">${opt.label}</button>`
+        )
+        .join("")}</div>
+      <button type="button" class="btn btn-primary fq-continue" onclick="findQuizNext()">Continue \u2192</button>`;
+  } else if (q.type === "slider") {
+    const val = existing != null ? existing : 50;
+    bodyHtml = `
+      <div class="fq-slider-wrap">
+        <input type="range" min="0" max="100" value="${val}" class="fq-slider" id="fqSliderInput" oninput="findQuizState.answers['${q.id}']=parseInt(this.value)">
+        <div class="fq-slider-labels"><span>${q.leftLabel}</span><span>${q.rightLabel}</span></div>
+      </div>
+      <button type="button" class="btn btn-primary fq-continue" onclick="findQuizNext()">Continue \u2192</button>`;
+  } else if (q.type === "text") {
+    bodyHtml = `
+      <textarea class="fq-textarea" id="fqTextInput" placeholder="Optional\u2026" rows="3">${existing || ""}</textarea>
+      <button type="button" class="btn btn-primary fq-continue" onclick="findQuizNext()">Continue \u2192</button>`;
+  }
+
+  el.innerHTML = `
+    <div class="fq-progress-track"><div class="fq-progress-fill" style="width:${progressPct}%"></div></div>
+    <div class="fq-question-num">QUESTION ${step + 1} OF ${total}${q.optional ? " \u00b7 OPTIONAL" : ""}</div>
+    <h2 class="fq-prompt">${q.prompt}</h2>
+    ${q.sub ? `<p class="fq-sub">${q.sub}</p>` : ""}
+    <div class="fq-body">${bodyHtml}</div>
+    <div class="fq-nav">
+      ${step > 0 ? `<button type="button" class="fq-back" onclick="findQuizBack()">\u2190 Back</button>` : `<span></span>`}
+      ${q.optional ? `<button type="button" class="fq-skip" onclick="findQuizNext()">Skip \u2192</button>` : ""}
+    </div>
+  `;
+}
+
+window.selectFindSingle = function (qid, label) {
+  findQuizState.answers[qid] = label;
+  setTimeout(() => {
+    findQuizState.step++;
+    renderFindQuizStep();
+  }, 220);
+  renderFindQuizStep(); // immediate highlight before advancing
+};
+
+window.toggleFindMulti = function (qid, label, maxSelect) {
+  const cur = findQuizState.answers[qid] || [];
+  const idx = cur.indexOf(label);
+  if (idx > -1) {
+    cur.splice(idx, 1);
+  } else {
+    if (cur.length >= maxSelect) return;
+    cur.push(label);
+  }
+  findQuizState.answers[qid] = cur;
+  renderFindQuizStep();
+};
+
+window.findQuizNext = function () {
+  const q = findQuizQuestions()[findQuizState.step];
+  if (q.type === "text") {
+    const val = document.getElementById("fqTextInput").value.trim();
+    if (val) findQuizState.answers[q.id] = val;
+  }
+  findQuizState.step++;
+  renderFindQuizStep();
+};
+
+window.findQuizBack = function () {
+  findQuizState.step = Math.max(0, findQuizState.step - 1);
+  renderFindQuizStep();
+};
+
+window.findQuizRestart = function () {
+  findQuizState.step = 0;
+  findQuizState.answers = {};
+  renderFindQuizStep();
+};
+
+// ---------- Results: FIND YOUR PATH ----------
+function computeFindPathResults() {
+  const answers = findQuizState.answers;
+  const scores = { kids: 0, tournament: 0, sports: 0, couples: 0, mental_fitness: 0, empowering: 0, corporate: 0, online: 0 };
+  const contributions = []; // { label, program, weight }
+
+  FIND_PATH_QUESTIONS.forEach((q) => {
+    const val = answers[q.id];
+    if (val == null) return;
+    const chosen = q.type === "multi" ? val : [val];
+    chosen.forEach((label) => {
+      const opt = q.options.find((o) => o.label === label);
+      if (!opt || !opt.score) return;
+      Object.entries(opt.score).forEach(([prog, weight]) => {
+        scores[prog] += weight;
+        if (q.id !== "who") contributions.push({ label, program: prog, weight });
+      });
+    });
+  });
+
+  // Explicit track override: who-for answer strongly determines primary fit
+  const whoTrack = FIND_PATH_QUESTIONS[0].options.find((o) => o.label === answers.who)?.track;
+  let primary;
+  if (whoTrack === "child") primary = "kids";
+  else if (whoTrack === "partner") primary = "couples";
+  else if (whoTrack === "team") primary = "corporate";
+  else {
+    primary = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  }
+
+  const also = Object.entries(scores)
+    .filter(([id]) => id !== primary)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 2)
+    .map(([id]) => id)
+    .filter((id) => scores[id] > 0);
+
+  const topReasons = contributions
+    .filter((c) => c.program === primary)
+    .sort((a, b) => b.weight - a.weight)
+    .slice(0, 2)
+    .map((c) => c.label);
+
+  return { primary, also, topReasons };
+}
+
+function renderFindQuizResults() {
+  if (findQuizState.type === "path") renderFindPathResults();
+  else renderFindPeopleResults();
+}
+
+function renderFindPathResults() {
+  const { primary, also, topReasons } = computeFindPathResults();
+  const meta = FIND_PATH_RESULTS[primary];
+  const program = PROGRAMS.find((p) => p.id === meta.program);
+  const alsoPrograms = also.map((id) => PROGRAMS.find((p) => p.id === id)).filter(Boolean);
+
+  const whyText =
+    topReasons.length > 0
+      ? `You told us you're looking for ${topReasons.map((r) => `\u201c${r.toLowerCase().replace(/\.$/, "")}\u201d`).join(" and ")} \u2014 that lines up closely with what ${program.title} is built around.`
+      : `Based on your answers, ${program.title} looks like a strong starting point.`;
+
+  const el = document.getElementById("findQuizInner");
+  el.innerHTML = `
+    <div class="fq-result">
+      <div class="fq-result-eyebrow">YOUR PATH LOOKS LIKE</div>
+      <h2 class="fq-result-title">${meta.label}</h2>
+      <p class="fq-result-why">${whyText}</p>
+      <div class="fq-result-card">
+        <div class="fq-result-card-label">RECOMMENDED</div>
+        <div class="fq-result-card-title">${program.title}</div>
+        <button type="button" class="btn btn-primary" onclick="closeFindQuiz(); openBooking('${program.id}');">Explore ${program.title} \u2192</button>
+      </div>
+      ${
+        alsoPrograms.length
+          ? `<div class="fq-also">
+        <div class="fq-also-label">Also worth exploring</div>
+        ${alsoPrograms.map((p) => `<button type="button" class="fq-also-link" onclick="closeFindQuiz(); openBooking('${p.id}');">${p.title}</button>`).join("")}
+      </div>`
+          : ""
+      }
+      <div class="fq-result-actions">
+        <button type="button" class="fq-restart" onclick="findQuizRestart()">Try Again</button>
+        <a href="#contact" class="fq-talk" onclick="closeFindQuiz()">Talk to Us</a>
+      </div>
+      <p class="fq-disclaimer">Find Your Path is a program-orientation tool, not a psychological or clinical assessment. Your answers are used only to help you explore Train Your Brain experiences that may suit your goals and preferences.</p>
+    </div>
+  `;
+}
+
+// ---------- Results: FIND YOUR PEOPLE ----------
+const FIND_PEOPLE_TABLE_PHRASES = {
+  "cognitive,competitive": "Sharp thinking, real games, and just enough competition to keep things interesting.",
+  "competitive,cognitive": "Sharp thinking, real games, and just enough competition to keep things interesting.",
+  "conversation,calm": "Curious minds, low-pressure conversation, and space to actually talk.",
+  "calm,conversation": "Curious minds, low-pressure conversation, and space to actually talk.",
+  "playful,social": "A lively table, easy company, and conversation that doesn't take itself too seriously.",
+  "social,playful": "A lively table, easy company, and conversation that doesn't take itself too seriously.",
+  "conversation,cognitive": "Ideas worth sitting with, and people who actually want to talk them through.",
+  "cognitive,conversation": "Ideas worth sitting with, and people who actually want to talk them through.",
+  "structured,cognitive": "A little structure that makes it easy to dive straight into a real challenge.",
+  "cognitive,structured": "A little structure that makes it easy to dive straight into a real challenge.",
+  "conversation,dating": "Real conversation first \u2014 getting to know someone properly, away from the usual small talk.",
+  "dating,conversation": "Real conversation first \u2014 getting to know someone properly, away from the usual small talk.",
+};
+
+function computeFindPeopleResults() {
+  const answers = findQuizState.answers;
+  const tagCounts = {};
+  let datingCount = 0;
+  let competitiveCount = 0;
+
+  FIND_PEOPLE_QUESTIONS.forEach((q) => {
+    if (q.type === "slider" || q.type === "text") return;
+    const val = answers[q.id];
+    if (val == null) return;
+    const chosen = q.type === "multi" ? val : [val];
+    chosen.forEach((label) => {
+      const opt = q.options.find((o) => o.label === label);
+      if (!opt || !opt.tag) return;
+      tagCounts[opt.tag] = (tagCounts[opt.tag] || 0) + 1;
+      if (opt.tag === "dating") datingCount++;
+      if (opt.tag === "competitive") competitiveCount++;
+    });
+  });
+  // sliders nudge tags too
+  if (answers.slider_depth != null && answers.slider_depth < 40) tagCounts.conversation = (tagCounts.conversation || 0) + 1;
+  if (answers.slider_depth != null && answers.slider_depth > 60) tagCounts.playful = (tagCounts.playful || 0) + 1;
+  if (answers.slider_competition != null && answers.slider_competition > 60) competitiveCount++;
+
+  const sortedTags = Object.entries(tagCounts).sort((a, b) => b[1] - a[1]).map(([t]) => t);
+  const top2 = sortedTags.slice(0, 2);
+  const phraseKey = top2.join(",");
+  const description = FIND_PEOPLE_TABLE_PHRASES[phraseKey] || "Curious people, real conversation, and just enough challenge to keep things interesting.";
+
+  const suggestions = [];
+  if (datingCount > 0) suggestions.push("couples");
+  if (competitiveCount >= 2) suggestions.push("tournament");
+  suggestions.push("mental_fitness");
+  const unique = [...new Set(suggestions)].slice(0, 2);
+
+  return { description, programs: unique };
+}
+
+function renderFindPeopleResults() {
+  const { description, programs } = computeFindPeopleResults();
+  const progObjs = programs.map((id) => PROGRAMS.find((p) => p.id === id)).filter(Boolean);
+
+  const el = document.getElementById("findQuizInner");
+  el.innerHTML = `
+    <div class="fq-result">
+      <div class="fq-result-eyebrow">YOUR KIND OF TABLE</div>
+      <p class="fq-result-table-desc">\u201c${description}\u201d</p>
+      <div class="fq-result-card">
+        <div class="fq-result-card-label">YOU MAY ENJOY</div>
+        ${progObjs.map((p) => `<div class="fq-result-card-title" style="margin-bottom:8px;">${p.title}</div>`).join("")}
+        <button type="button" class="btn btn-primary" onclick="closeFindQuiz(); document.getElementById('contact').scrollIntoView({behavior:'smooth'});">See Upcoming Events \u2192</button>
+      </div>
+      <div class="fq-result-actions">
+        <button type="button" class="fq-restart" onclick="findQuizRestart()">Try Again</button>
+        <a href="#contact" class="fq-talk" onclick="closeFindQuiz()">Talk to Us</a>
+      </div>
+      <p class="fq-disclaimer">Find Your People helps us understand what kind of social environment you're likely to enjoy \u2014 it's not a compatibility algorithm or a personality diagnosis. Your answers are only used to invite you to events that fit.</p>
+    </div>
+  `;
+}
 </script>
 </body>
 </html>
