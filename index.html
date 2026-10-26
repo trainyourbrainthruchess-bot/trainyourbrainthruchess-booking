@@ -1152,6 +1152,68 @@ header.site{
 .coach-warn{font-size:12.5px;color:#8a3d0c;background:#fff7f1;border:1px solid #f3b58c;border-radius:10px;padding:9px 12px;margin-top:10px;line-height:1.5;}
 @media(max-width:480px){.coach-price b,.coach-opt .coach-amt{font-size:19px;}}
 </style>
+<style id="tyb-added-women-css">
+/* ===== ADDED: Empowering Women — card layout + booking screens ===== */
+/* Spacing fix: paragraphs no longer stretch (that was the empty gap under the title); the button stays pinned to the bottom of every card. */
+.program-body p{flex:none;}
+.program-foot{margin-top:auto;padding-top:6px;}
+.program-card .w-tagline{font-family:var(--serif);font-size:15.5px;font-weight:700;line-height:1.35;color:var(--terracotta);margin:0 0 2px;}
+.program-card .w-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);font-weight:700;margin-top:4px;}
+.program-card .w-bold{color:var(--ink);}
+
+.w-intro{font-size:14px;line-height:1.6;color:#4a4038;margin:0 0 14px;}
+.w-tag{font-family:var(--serif);font-size:17px;font-weight:700;line-height:1.3;color:var(--terracotta);margin:0 0 8px;}
+.w-facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 16px;}
+.w-fact{border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--white);font-size:13px;line-height:1.4;}
+.w-fact span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6b5f52;margin-bottom:2px;}
+.w-fact.wide{grid-column:1/-1;}
+.w-h{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--terracotta);font-weight:700;margin:4px 0 10px;}
+.w-opt{display:block;width:100%;text-align:left;cursor:pointer;margin-bottom:10px;}
+.w-opt h5{font-family:var(--serif);font-size:16.5px;margin:0 0 3px;color:var(--ink);}
+.w-opt p{margin:0;font-size:13px;line-height:1.5;color:#6b5f52;}
+.w-date{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;min-height:64px;text-align:left;cursor:pointer;
+  border:1.5px solid var(--line);border-radius:14px;background:var(--white);padding:12px 14px;margin-bottom:10px;font-family:var(--sans);color:var(--ink);}
+.w-date b{display:block;font-family:var(--serif);font-size:16.5px;line-height:1.25;}
+.w-date small{display:block;font-size:12.5px;color:#6b5f52;margin-top:2px;}
+.w-date.sel{border-color:var(--terracotta);background:#fff7f1;box-shadow:0 0 0 2px rgba(220,93,14,.18);}
+.w-date.off{opacity:.5;cursor:not-allowed;background:#f1eae2;}
+.w-st{flex:none;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;font-weight:700;padding:4px 9px;border-radius:100px;white-space:nowrap;}
+.w-st.ok{background:#DDEFE0;color:#1f6b3a;}
+.w-st.req{background:#FBF0D2;color:#7a5a05;}
+.w-st.no{background:#EFE6DE;color:#6b5f52;}
+.w-alt{border-top:1.5px dashed var(--line);margin-top:18px;padding-top:16px;}
+.w-alt h5{font-family:var(--serif);font-size:16.5px;margin:0 0 6px;color:var(--ink);}
+.w-alt p{font-size:13.5px;line-height:1.55;color:#4a4038;margin:0 0 12px;}
+.w-note{font-size:12.5px;color:#6b5f52;line-height:1.5;margin-top:10px;}
+.w-warn{font-size:13px;color:#8a3d0c;background:#fff7f1;border:1px solid #f3b58c;border-radius:10px;padding:10px 12px;margin:12px 0;line-height:1.5;}
+.w-qty{display:flex;align-items:center;gap:12px;}
+.w-qty button{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:var(--white);font-size:22px;line-height:1;cursor:pointer;color:var(--ink);}
+.w-qty b{font-family:var(--serif);font-size:22px;min-width:28px;text-align:center;}
+.w-pay{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:10px;font-weight:600;}
+.w-pay.active{border-color:var(--terracotta);background:#fff7f1;}
+.w-copied{font-family:var(--mono);font-size:12px;color:#1f6b3a;margin-left:8px;}
+@media(max-width:480px){.w-facts{grid-template-columns:1fr;}.w-date b{font-size:15.5px;}}
+/* header: Copy Link beside the X */
+.w-head-actions{display:flex;align-items:center;gap:10px;position:relative;}
+.w-copy{white-space:nowrap;display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--ink);font-family:var(--mono);font-size:12px;font-weight:600;padding:9px 10px;border-radius:8px;cursor:pointer;min-height:40px;}
+.w-copy:hover{background:rgba(23,19,16,.07);}
+.w-head-actions .modal-close{min-width:40px;min-height:40px;}
+.w-copied-pop{position:absolute;right:0;top:calc(100% + 4px);background:var(--ink);color:var(--cream);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .15s;z-index:8;}
+.w-copied-pop.show{opacity:1;}
+@media(max-width:480px){.w-copy-t{display:none;}}
+/* subtle alternative-dates note (initial overview only) */
+.w-alt{border-top:1px solid var(--line);margin-top:16px;padding-top:12px;}
+.w-alt-h{font-size:12px;font-weight:600;color:#6b5f52;margin-bottom:2px;}
+.w-alt-p{font-size:12px;line-height:1.5;color:#8a7d70;}
+.w-alt-link{color:var(--terracotta);font-weight:600;text-decoration:underline;white-space:nowrap;}
+</style>
+<style id="tyb-added-berlin-css">
+.w-price{flex:none;font-family:var(--serif);font-size:19px;font-weight:700;color:var(--ink);white-space:nowrap;text-align:right;}
+.w-price i{display:block;font-family:var(--sans);font-style:normal;font-size:11px;font-weight:500;color:#6b5f52;}
+.w-share-menu{position:absolute;right:0;top:calc(100% + 4px);background:var(--white);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:9;min-width:150px;}
+.w-share-menu button{display:block;width:100%;text-align:left;background:none;border:none;padding:11px 12px;border-radius:8px;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--ink);cursor:pointer;}
+.w-share-menu button:hover{background:rgba(23,19,16,.07);}
+</style>
 </head>
 <body>
 
@@ -5362,6 +5424,7 @@ fypInitAdminBar();
   var BERLIN_INPERSON = "In Person — Berlin";
   var SINGLE_EUR = 50, FOUR_EUR = 120;
   var sessionTaken = {};   // slots booked by this visitor during this page view
+  window.TYB_COACH = { booked: COACHING.booked, taken: sessionTaken };   // read by the Berlin programs so one coach is never double-booked
 
   // ---------- Program (registered AFTER the programs grid was drawn, so the grid is unchanged) ----------
   var ADULTS = {
@@ -5431,7 +5494,7 @@ fypInitAdminBar();
   // A slot is unavailable if ANY weekly occurrence is already booked. Online and in-person share the same calendar.
   function slotTaken(dateStr, slot, n) {
     return weeklyDates(dateStr, n || nSessions()).some(function (ds) {
-      return (COACHING.booked[ds] || []).indexOf(slot) !== -1 || sessionTaken[ds + "|" + slot];
+      return (COACHING.booked[ds] || []).indexOf(slot) !== -1 || sessionTaken[ds + "|" + slot] || (window.TYB && window.TYB.busy(ds, slot, "coaching"));
     });
   }
   // Make the existing calendar treat taken coaching slots as "full" (1:1 -> capacity of one)
@@ -5679,6 +5742,738 @@ fypInitAdminBar();
       '<button type="button" class="btn btn-primary btn-sm" onclick="coachCopyLink()">Copy Booking Link</button>' +
       '<div id="coachAdminMsg" style="margin-top:8px;opacity:.8;min-height:14px;word-break:break-all;"></div></div>');
   }
+})();
+</script>
+<script id="tyb-added-women-js">
+/* ============================================================
+   ADDED: Empowering Women (Berlin) — new program-card text, shareable link, simplified booking.
+   Reuses the site's own booking modal, EUR payment methods (PayPal / Revolut), receipt upload,
+   confirmation step and the Get in Touch form. Nothing above this script was edited.
+   ============================================================ */
+(function () {
+  // ---------- EDIT ME ----------
+  var WOMEN = {
+    tz: "Europe/Berlin",
+    slot: "8:00 PM \u2013 10:00 PM",       // one fixed time
+    startHour: 20,
+    priceEUR: 25,                           // per participant
+    venueName: "Motel One Berlin-Hauptbahnhof",
+    venueAddress: "Invalidenstra\u00dfe 54, 10557 Berlin",
+    // Seven event dates. Each date has its own capacity of 8 and closes automatically when full or once it has started.
+    dates: {
+      "2026-10-29": "event", "2026-10-30": "event", "2026-10-31": "event", "2026-11-01": "event",
+      "2026-11-02": "event", "2026-11-03": "event", "2026-11-04": "event"
+    }
+    // Places already taken are read from the site's own CONFIRMED_BOOKINGS, e.g.
+    //   CONFIRMED_BOOKINGS.empowering = { "2026-10-30": { "8:00 PM – 10:00 PM": 3 } };   (3 places taken -> 5 left; capacity is 8)
+  };
+  var LOCATION_TEXT = WOMEN.venueName + " — " + WOMEN.venueAddress;
+  var TITLE = "Empowering Women \u2013 Chess Night";
+  var sessionTaken = {};            // places booked by this visitor during this page view, per date
+  CONFIRMED_BOOKINGS.empowering = CONFIRMED_BOOKINGS.empowering || {};
+
+  // ---------- Program record: Berlin only, EUR only ----------
+  var P = getProgram("empowering");
+  P.title = TITLE; P.eurOnly = true; P.multiCurrency = false; P.singleSession = true; P.feeEUR = WOMEN.priceEUR; P.feeEGP = null;
+  P.locations = [LOCATION_TEXT]; P.locationBehavior = {};
+
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function berlinNow() {
+    var parts = new Intl.DateTimeFormat("en-CA", { timeZone: WOMEN.tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+    var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });
+    return { date: o.year + "-" + o.month + "-" + o.day, mins: (+o.hour) * 60 + (+o.minute) };
+  }
+  function isPast(ds) { var n = berlinNow(); return ds < n.date || (ds === n.date && n.mins >= WOMEN.startHour * 60); }
+  function niceLong(ds) { return new Date(ds + "T00:00:00").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }); }
+  function remaining(ds) { return Math.max(0, getRemaining(ds, "empowering", WOMEN.slot, LOCATION_TEXT) - (sessionTaken[ds] || 0)); }
+  function total() { return WOMEN.priceEUR * (state.womenN || 1); }
+  function applyFee() { P.feeEUR = total(); state.form.sessions = "1"; }
+  function shareUrl() { return location.origin + location.pathname + "#empowering-women"; }
+
+  // ---------- 1) The program card: engaging text, same image and style ----------
+  (function updateCard() {
+    var card = Array.prototype.slice.call(document.querySelectorAll(".program-card")).filter(function (c) { var h = c.querySelector("h3"); return h && h.textContent.trim() === "Empowering Women"; })[0];
+    if (!card) return;
+    var body = card.querySelector(".program-body"), status = body.querySelector(".program-status");
+    var explore = ["Strategic Thinking & Decision-Making", "Communication & Collaboration", "Confidence & Adaptability", "Cognitive Agility & Self-Awareness", "Meaningful Connections"];
+    body.innerHTML = (status ? status.outerHTML : "") +
+      "<h3>Empowering Women</h3>" +
+      '<p class="w-tagline">Think Strategically. Connect Meaningfully. Grow Confidently.</p>' +
+      "<p>An interactive, chess-based experience designed for women who want to challenge their thinking, build confidence, and connect with like-minded individuals.</p>" +
+      "<p>Through guided chess activities, strategy challenges, and psychology-informed discussions, we explore how we make decisions, communicate, adapt, and respond under pressure.</p>" +
+      '<p class="w-bold"><b>No previous chess experience is required.</b></p>' +
+      '<div class="w-label">What You’ll Explore</div>' +
+      '<ul class="program-outcomes">' + explore.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul>" +
+      '<div class="program-levels"><span class="loc-pill-sm">Berlin</span><span class="loc-pill-sm">Limited to 8 Participants</span></div>' +
+      '<div class="program-foot"><button class="btn btn-primary btn-sm" onclick="openBooking(\'empowering\')">Book Your Experience</button></div>';
+  })();
+
+  // ---------- 2) Opening the booking ----------
+  var _openBooking = window.openBooking;
+  window.openBooking = function (id) {
+    _openBooking(id);
+    if (id !== "empowering") return;
+    state.requestMode = false; state.waitlistMode = false; state.bookingMode = null;
+    state.currency = "EUR"; state.womenN = 1;
+    state.selectedLocation = LOCATION_TEXT; state.selectedSlot = WOMEN.slot; state.selectedDateStr = null;
+    state.step = 1; P.feeEUR = WOMEN.priceEUR;
+    renderStep();
+  };
+
+  // Copy Link: small button in the modal header, beside the X (only for Empowering Women)
+  var closeBtn = document.getElementById("modalClose"), head = closeBtn && closeBtn.parentNode, copyBtn = null;
+  if (head) {
+    var wrap = document.createElement("div"); wrap.className = "w-head-actions";
+    copyBtn = document.createElement("button"); copyBtn.type = "button"; copyBtn.id = "womenCopyBtn"; copyBtn.className = "w-copy"; copyBtn.style.display = "none";
+    copyBtn.setAttribute("aria-label", "Copy link"); copyBtn.title = "Copy link"; copyBtn.setAttribute("onclick", "womenCopyLink()");
+    copyBtn.innerHTML = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.7-1.7"/></svg><span class="w-copy-t">Copy link</span>';
+    var pop = document.createElement("span"); pop.id = "womenCopied"; pop.className = "w-copied-pop"; pop.setAttribute("role", "status");
+    head.insertBefore(wrap, closeBtn); wrap.appendChild(copyBtn); wrap.appendChild(closeBtn); wrap.appendChild(pop);
+  }
+  var _renderStep = window.renderStep;
+  window.renderStep = function () {
+    var p = getProgram(state.programId);
+    if (copyBtn) copyBtn.style.display = (p && p.id === "empowering") ? "" : "none";
+    if (!p || p.id !== "empowering") return _renderStep();
+    updateDots();
+    modalProgName.textContent = "Empowering Women";
+    if (state.step <= 3) { state.step = 1; return wHome(); }
+    if (state.step === 4) return wDetails();
+    return _renderStep();   // 5 payment, 6 receipt, 7 confirm: the site's own steps
+  };
+
+  // ----- Step 1: program overview + date selection (one screen) -----
+  function wHome() {
+    modalTitle.textContent = "Empowering Women";
+    var sel = state.selectedDateStr;
+    var list = Object.keys(WOMEN.dates).sort().map(function (ds) {
+      var past = isPast(ds), left = remaining(ds), on = ds === sel, off = past || left === 0;
+      var st = past ? ["no", "Date passed"] : left === 0 ? ["no", "Fully booked"] : ["ok", left + (left === 1 ? " place left" : " places left")];
+      return '<button type="button" class="w-date ' + (on ? "sel " : "") + (off ? "off" : "") + '" ' + (off ? "disabled" : 'onclick="womenPickDate(\'' + ds + '\')"') + ">" +
+        "<span><b>" + niceLong(ds) + "</b><small>8:00–10:00 PM</small></span>" + '<span class="w-st ' + st[0] + '">' + st[1] + "</span></button>";
+    }).join("");
+    modalBody.innerHTML =
+      '<div class="w-tag">Think Strategically. Connect Meaningfully. Grow Confidently.</div>' +
+      '<p class="w-intro">An interactive, chess-based experience for women who want to challenge their thinking, build confidence, and connect with like-minded individuals. No previous chess experience is required.</p>' +
+      '<div class="w-facts">' +
+        '<div class="w-fact wide"><span>Location</span><b>' + esc(WOMEN.venueName) + "</b><br>" + esc(WOMEN.venueAddress) + "</div>" +
+        '<div class="w-fact"><span>Time</span><b>8:00–10:00 PM</b></div>' +
+        '<div class="w-fact"><span>Price</span><b>€' + WOMEN.priceEUR + "</b> per participant<br>Max. 8 participants</div>" +
+      "</div>" +
+      '<div class="w-h">Select your date</div>' + list +
+      // Small, subtle section: only on the initial overview, hidden as soon as a date is selected
+      (sel ? "" : '<div class="w-alt"><div class="w-alt-h">Looking for another date or a private group experience?</div>' +
+        '<div class="w-alt-p">Private sessions and group experiences can also be arranged upon request. ' +
+        '<a href="#contact" class="w-alt-link" onclick="womenContact(); return false;">Get in Touch →</a></div></div>');
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="closeModal()">Close</button>' +
+      '<button class="btn btn-primary" ' + (sel ? 'onclick="goToStep(4)"' : "disabled") + ">Continue</button>";
+  }
+
+  // Send the visitor to the existing Get in Touch form
+  window.womenContact = function () {
+    var msg = "[Empowering Women inquiry]\nRequest: Another date or a private group experience\nLocation: " + WOMEN.venueName + ", " + WOMEN.venueAddress + "\n\nMy details / questions:\n";
+    closeModal();
+    goToProgramEnquiry("Empowering Women");
+    var corp = document.getElementById("corporateFields"); if (corp) corp.style.display = "none";   // company/team fields don't apply here
+    var m = document.getElementById("cMessage"); if (m) m.value = msg;
+  };
+  window.womenPickDate = function (ds) {
+    if (isPast(ds) || remaining(ds) === 0) return;
+    state.selectedDateStr = ds; state.selectedSlot = WOMEN.slot; state.selectedLocation = LOCATION_TEXT;
+    state.womenN = 1; state.step = 1; renderStep();
+  };
+
+  // ----- Step 4: participant details + live booking summary -----
+  function summaryHtml() {
+    return '<div class="summary-box" id="wSummary">' +
+      '<div class="row"><span>Program</span><b>' + esc(TITLE) + "</b></div>" +
+      '<div class="row"><span>Location</span><b style="text-align:right">' + esc(WOMEN.venueName) + "<br>" + esc(WOMEN.venueAddress) + "</b></div>" +
+      '<div class="row"><span>Selected date</span><b>' + niceLong(state.selectedDateStr) + "</b></div>" +
+      '<div class="row"><span>Time</span><b>8:00\u201310:00 PM</b></div>' +
+      '<div class="row"><span>Participants</span><b id="wSumN">' + (state.womenN || 1) + "</b></div>" +
+      '<div class="row"><span>Total</span><b id="wSumTotal">€' + total() + "</b></div></div>";
+  }
+  function wDetails() {
+    modalTitle.textContent = "Your details";
+    var f = state.form, max = Math.min(MAX_GROUP_SIZE, remaining(state.selectedDateStr));
+    if ((state.womenN || 1) > max) state.womenN = Math.max(1, max);
+    applyFee();
+    modalBody.innerHTML = summaryHtml() +
+      '<div class="field" style="margin-bottom:12px;"><label>Full name</label><input type="text" id="wmName" autocomplete="name" value="' + esc(f.participantName) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>Email address</label><input type="email" id="wmEmail" autocomplete="email" value="' + esc(f.email) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>WhatsApp number</label><input type="tel" id="wmWhats" autocomplete="tel" placeholder="+49 …" value="' + esc(f.phone) + '"></div>' +
+      '<div class="field" style="margin-bottom:6px;"><label>Number of participants (€' + WOMEN.priceEUR + " each, " + max + (max === 1 ? " place" : " places") + ' left)</label>' +
+        '<div class="w-qty"><button type="button" aria-label="Fewer participants" onclick="womenQty(-1)">−</button><b id="wQty">' + (state.womenN || 1) + '</b><button type="button" aria-label="More participants" onclick="womenQty(1)">+</button></div></div>' +
+      '<p class="w-note">Please check your details above, then continue to payment. Your place is only confirmed after our team has verified your payment.</p>' +
+      '<p id="wmMsg" style="font-size:12.5px;color:#8a3d0c;font-family:var(--mono);margin-top:10px;"></p>';
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="womenSave(true)">Back</button><button class="btn btn-primary" onclick="womenSave(false)">Continue to payment</button>';
+  }
+  function capture() {
+    var g = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : null; };
+    var n = g("wmName"), e = g("wmEmail"), w = g("wmWhats");
+    if (n !== null) state.form.participantName = n;
+    if (e !== null) state.form.email = e;
+    if (w !== null) state.form.phone = w;
+  }
+  window.womenQty = function (d) {
+    var max = Math.min(MAX_GROUP_SIZE, remaining(state.selectedDateStr));
+    state.womenN = Math.max(1, Math.min(max, (state.womenN || 1) + d)); applyFee();
+    document.getElementById("wQty").textContent = state.womenN;
+    document.getElementById("wSumN").textContent = state.womenN;
+    document.getElementById("wSumTotal").textContent = "€" + total();
+  };
+  window.womenSave = function (back) {
+    capture();
+    if (back) { state.step = 1; renderStep(); return; }
+    var f = state.form, miss = [], msg = document.getElementById("wmMsg");
+    if (!f.participantName) miss.push("your full name");
+    if (!/^\S+@\S+\.\S+$/.test(f.email || "")) miss.push("a valid email address");
+    if ((f.phone || "").replace(/\D/g, "").length < 6) miss.push("your WhatsApp number");
+    if (miss.length) { msg.textContent = "Please add " + miss.join(", ") + "."; return; }
+    var ds = state.selectedDateStr;
+    if (isPast(ds) || remaining(ds) < state.womenN) {   // re-check right before payment
+      msg.textContent = isPast(ds) ? "Sorry, this date has passed. Please choose another." : "Sorry, there are not enough places left for that many participants.";
+      setTimeout(function () { state.selectedDateStr = null; state.step = 1; renderStep(); }, 1400); return;
+    }
+    applyFee();
+    state.form.note = "[Empowering Women booking]\nVenue: " + LOCATION_TEXT + "\nDate: " + ds + " " + WOMEN.slot +
+      "\nParticipants: " + state.womenN + "\nPrice per participant: EUR " + WOMEN.priceEUR + "\nTotal: EUR " + total() + "\nWhatsApp: " + f.phone;
+    state.step = 5; renderStep();
+  };
+
+  // ----- Payment / receipt / confirmation: the site's own steps, plus participants, venue and clickable pay options -----
+  window.womenSetMethod = function (label) {
+    state.method = label;
+    document.querySelectorAll(".pay-tag-select").forEach(function (t) { t.classList.toggle("active", t.textContent.trim() === label); });
+    document.querySelectorAll(".w-pay").forEach(function (r) { r.classList.toggle("active", r.getAttribute("data-m") === label); });
+  };
+  function addRows(isPayment) {
+    var box = modalBody.querySelector(".summary-box"); if (!box) return;
+    box.insertAdjacentHTML("beforeend",
+      '<div class="row"><span>Participants</span><b>' + state.womenN + "</b></div>" +
+      '<div class="row"><span>Price per participant</span><b>€' + WOMEN.priceEUR + "</b></div>");
+    if (!isPayment) return;
+    var lbl = modalBody.querySelector(".fee-label"); if (lbl) lbl.textContent = "Total due";
+    var row = modalBody.querySelector(".tourn-payment-row"); if (!row) return;
+    var rows = paymentMethodsFor("EUR").map(function (m) {
+      return '<div class="w-pay ' + (state.method === m.label ? "active" : "") + '" data-m="' + m.label + '" onclick="womenSetMethod(\'' + m.label + '\')"><span>' + m.label + "</span>" + payHereHtml(m) + "</div>";
+    }).join("");
+    row.insertAdjacentHTML("afterend", rows +
+      '<p class="w-note">Tap <b>Pay Here</b> (Revolut) or <b>Copy PayPal Account</b> to pay the total above. Then press <b>Continue</b> and upload your payment confirmation. Your place is <b>not confirmed</b> until our team has verified your payment — opening a payment link or uploading a screenshot alone does not confirm it.</p>');
+  }
+  ["renderStepPayment", "renderStepReceipt", "renderStepConfirm", "renderStepDone"].forEach(function (name) {
+    var orig = window[name];
+    window[name] = function (program) {
+      orig(program);
+      if (program && program.id === "empowering") {
+        if (name !== "renderStepReceipt") addRows(name === "renderStepPayment");
+        if (name === "renderStepDone") sessionTaken[state.selectedDateStr] = (sessionTaken[state.selectedDateStr] || 0) + state.womenN;
+      }
+    };
+  });
+
+  // ---------- 3) Shareable link: <your-site>/#empowering-women  (also ?book=empowering-women, and /empowering-women if your host serves the page there) ----------
+  window.womenCopyLink = function () {
+    var url = shareUrl(), pop = document.getElementById("womenCopied");
+    var done = function () { if (!pop) return; pop.textContent = "Link copied!"; pop.classList.add("show"); clearTimeout(pop._t); pop._t = setTimeout(function () { pop.classList.remove("show"); }, 2200); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { window.prompt("Copy this link:", url); });
+    else window.prompt("Copy this link:", url);
+  };
+  function wantsWomen() {
+    var h = (location.hash || "").replace(/^#/, "").toLowerCase();
+    var path = (location.pathname || "").replace(/\/+$/, "").toLowerCase();
+    var q = (new URLSearchParams(location.search).get("book") || "").toLowerCase();
+    return h === "empowering-women" || /\/empowering-women$/.test(path) || q === "empowering-women";
+  }
+  function womenLinkCheck() {
+    if (!wantsWomen()) return;
+    if (overlay.classList.contains("open") && state.programId === "empowering") return;
+    openBooking("empowering");
+  }
+  window.addEventListener("hashchange", womenLinkCheck);
+  womenLinkCheck();
+
+  // ---------- 4) Get in Touch: confirm Empowering Women inquiries accurately ----------
+  var flag = false;
+  document.addEventListener("submit", function (e) {
+    var m = document.getElementById("cMessage");
+    flag = !!(e.target && e.target.id === "contactForm" && m && m.value.indexOf("[Empowering Women inquiry]") === 0);
+  }, true);
+  var form = document.getElementById("contactForm");
+  if (form) form.addEventListener("submit", function () {
+    if (!flag) return;
+    var out = document.getElementById("cMsg");
+    if (out && out.textContent.indexOf("Thanks for your interest") === 0) out.textContent = "Thank you! Your Empowering Women inquiry has been received. We will get back to you with availability and details.";
+  });
+})();
+</script>
+<script id="tyb-added-berlin-js">
+/* ============================================================
+   ADDED: Berlin booking for "Chess for Kids & Teens" and "Chess Date Night",
+   plus the same Share / Copy Link header button and a permanent direct link for all four programs.
+   Reuses the site's own booking modal, EUR payment methods (PayPal / Revolut), receipt upload,
+   confirmation step and Get in Touch form. Existing (Cairo) booking flows are left as they are.
+   ============================================================ */
+(function () {
+  // ---------- EDIT ME ----------
+  var CFG = {
+    tz: "Europe/Berlin",
+    last: "2026-11-05",                       // Berlin schedule is offered through this date only
+    kids: {
+      label: "Berlin — Coffee Fellows – FOODFACTORY Cube Berlin",
+      venue: "Coffee Fellows – FOODFACTORY Cube Berlin", address: "Washingtonplatz 3, 10557 Berlin, Germany",
+      slots: { 5: ["12:00 PM – 1:00 PM", "1:00 PM – 2:00 PM"], 0: ["12:00 PM – 1:00 PM", "1:00 PM – 2:00 PM"] },   // Fridays and Sundays
+      capacity: 4, single: 20, four: 80,
+      // Children already confirmed per date and slot, e.g. "2026-10-30": { "12:00 PM – 1:00 PM": 2 }
+      booked: {}
+    },
+    dn: {
+      label: "Berlin — Motel One Berlin-Hauptbahnhof",
+      venue: "Motel One Berlin-Hauptbahnhof", address: "Invalidenstraße 54, 10557 Berlin, Germany",
+      weekday: ["7:00 PM – 8:00 PM"],                                          // Monday-Friday
+      weekend: ["5:00 PM – 6:00 PM", "6:00 PM – 7:00 PM"],                // Saturday-Sunday
+      price: 50,                                                                    // per couple (two participants)
+      // Slots already confirmed (one couple per slot), e.g. "2026-10-31": ["5:00 PM – 6:00 PM"]
+      booked: {}
+    }
+  };
+  var visitKids = {}, visitDn = {}, visitBusy = [];   // bookings made by this visitor during this page view
+  var KIDS_FULL = CFG.kids.venue + ", " + CFG.kids.address, DN_FULL = CFG.dn.venue + ", " + CFG.dn.address;
+
+  function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function berlinNow() {
+    var parts = new Intl.DateTimeFormat("en-CA", { timeZone: CFG.tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(new Date());
+    var o = {}; parts.forEach(function (p) { o[p.type] = p.value; });
+    return { date: o.year + "-" + o.month + "-" + o.day, mins: (+o.hour) * 60 + (+o.minute) };
+  }
+  function tmin(t) { var m = /(\d+):(\d+)\s*(AM|PM)/.exec(t), h = +m[1] % 12; if (m[3] === "PM") h += 12; return h * 60 + (+m[2]); }
+  function rng(slot) { var p = slot.split(/\s*–\s*/); return { s: tmin(p[0]), e: tmin(p[1]) }; }
+  function shortSlot(slot) { var p = slot.split(/\s*–\s*/); var a = p[0].replace(/\s*(AM|PM)/, ""), ap1 = /AM|PM/.exec(p[0])[0], ap2 = /AM|PM/.exec(p[1])[0]; return ap1 === ap2 ? a + "–" + p[1] : p[0] + "–" + p[1]; }
+  function slotPast(ds, slot) { var n = berlinNow(); return ds < n.date || (ds === n.date && n.mins >= rng(slot).s); }
+  function dow(ds) { return new Date(ds + "T00:00:00").getDay(); }
+  function niceLong(ds) { return new Date(ds + "T00:00:00").toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" }); }
+  function datesUntilLast() {
+    var out = [], p = berlinNow().date.split("-").map(Number);
+    for (var i = 0; i < 400; i++) {
+      var d = new Date(p[0], p[1] - 1, p[2] + i), ds = dayKey(d.getFullYear(), d.getMonth(), d.getDate());
+      if (ds > CFG.last) break; out.push(ds);
+    }
+    return out;
+  }
+
+  // ---------- Shared "coach is busy" ledger: no program can be booked over another one the same coach teaches ----------
+  function overlap(a, b) { return a.s < b.e && b.s < a.e; }
+  function sources(ds) {
+    var out = [], C = window.TYB_COACH;
+    if (C) {
+      (C.booked[ds] || []).forEach(function (s) { out.push({ who: "coaching", slot: s }); });
+      Object.keys(C.taken).forEach(function (k) { var i = k.indexOf("|"); if (k.slice(0, i) === ds) out.push({ who: "coaching", slot: k.slice(i + 1) }); });
+    }
+    var kb = CFG.kids.booked[ds] || {}; Object.keys(kb).forEach(function (s) { if (kb[s] > 0) out.push({ who: "kids", slot: s }); });
+    (CFG.dn.booked[ds] || []).forEach(function (s) { out.push({ who: "couples", slot: s }); });
+    visitBusy.forEach(function (v) { if (v.ds === ds) out.push({ who: v.who, slot: v.slot }); });
+    return out;
+  }
+  window.TYB = {
+    busy: function (ds, slot, except) { var r = rng(slot); return sources(ds).some(function (x) { return x.who !== except && overlap(rng(x.slot), r); }); }
+  };
+  function kidsLeft(ds, slot) { return Math.max(0, CFG.kids.capacity - ((CFG.kids.booked[ds] || {})[slot] || 0) - (visitKids[ds + "|" + slot] || 0)); }
+  function dnTaken(ds, slot) { return (CFG.dn.booked[ds] || []).indexOf(slot) !== -1 || !!visitDn[ds + "|" + slot]; }
+  function kidsSlots(ds) { return CFG.kids.slots[dow(ds)] || []; }
+  function dnSlots(ds) { var d = dow(ds); return d === 0 || d === 6 ? CFG.dn.weekend : CFG.dn.weekday; }
+  // status of one slot: {ok, label}
+  function kidsStatus(ds, slot) {
+    if (slotPast(ds, slot)) return { ok: false, cls: "no", label: "Passed" };
+    var left = kidsLeft(ds, slot);
+    if (left === 0) return { ok: false, cls: "no", label: "Full" };
+    if (window.TYB.busy(ds, slot, "kids")) return { ok: false, cls: "no", label: "Unavailable" };
+    return { ok: true, cls: "ok", label: left + (left === 1 ? " place left" : " places left"), left: left };
+  }
+  function dnStatus(ds, slot) {
+    if (slotPast(ds, slot)) return { ok: false, cls: "no", label: "Passed" };
+    if (dnTaken(ds, slot)) return { ok: false, cls: "no", label: "Booked" };
+    if (window.TYB.busy(ds, slot, "couples")) return { ok: false, cls: "no", label: "Unavailable" };
+    return { ok: true, cls: "ok", label: "Available" };
+  }
+  function kidsDates() { return datesUntilLast().filter(function (ds) { return kidsSlots(ds).length; }); }
+  function dnDates() { return datesUntilLast(); }
+
+  // ---------- Programs: add Berlin as a location (existing locations stay, in their order) ----------
+  var K = getProgram("kids"), D = getProgram("couples");
+  K.locations = [CFG.kids.label].concat(K.locations || LOCATIONS);
+  D.locations = [CFG.dn.label].concat(D.locations || LOCATIONS);
+
+  // ---------- Program cards: new descriptions, same image and style ----------
+  function cardOf(title) { return Array.prototype.slice.call(document.querySelectorAll(".program-card")).filter(function (c) { var h = c.querySelector("h3"); return h && h.textContent.trim() === title; })[0]; }
+  (function cards() {
+    var c = cardOf("Chess for Kids & Teens");
+    if (c) {
+      var fw = c.querySelector(".program-forwhom"), ds = fw && fw.nextElementSibling;
+      if (fw && ds && ds.tagName === "P") {
+        fw.outerHTML = '<p class="w-tagline">Learn Chess. Think Strategically. Build Confidence.</p>';
+        ds.outerHTML = "<p>An interactive chess program combining practical chess training with cognitive skills development.</p>" +
+          "<p>Through guided exercises, games, and strategic challenges, children explore concentration, decision-making, problem-solving, and emotional regulation.</p>" +
+          '<p class="w-bold"><b>Suitable for beginners and developing players.</b></p>';
+      }
+    }
+    c = cardOf("Chess Date Night");
+    if (c) {
+      var st = c.querySelector(".program-status"); if (st) st.textContent = STATUS_LABELS.open.text;
+      var fw2 = c.querySelector(".program-forwhom"), ds2 = fw2 && fw2.nextElementSibling;
+      if (fw2 && ds2 && ds2.tagName === "P") {
+        fw2.outerHTML = '<p class="w-tagline">Two Minds. One Board. A Different Kind of Date.</p>';
+        ds2.outerHTML = "<p>Step away from your usual routine and experience an interactive chess date designed for couples.</p>" +
+          "<p>Explore communication, collaboration, strategy, and decision-making through playful chess challenges and meaningful conversations.</p>" +
+          '<p class="w-bold"><b>No previous chess experience required.</b></p>' +
+          "<p>A one-hour experience designed to connect, challenge, and have fun together.</p>";
+      }
+      var note = c.querySelector(".program-cant-attend");
+      if (note) note.textContent = "Berlin: €50 / Couple · 60 minutes. Cairo: no fixed sessions right now — send us your preferred day and time and we'll confirm availability.";
+    }
+  })();
+
+  // ---------- Opening / routing ----------
+  var _openBooking = window.openBooking;
+  window.openBooking = function (id) { state.berlin = null; state.berlinNote = ""; _openBooking(id); };
+  window.tybBerlinBack = function () {
+    var p = getProgram(state.programId); leaveBerlin(p);
+    state.selectedLocation = p.id === "couples" ? CFG.dn.label : null; state.step = 1; renderStep();
+  };
+
+  var _renderStep = window.renderStep;
+  window.renderStep = function () {
+    var p = getProgram(state.programId);
+    if (p && (p.id === "kids" || p.id === "couples")) routeBerlin(p); else _renderStep();
+    syncShare();
+  };
+  function inBerlin(p) { return state.berlin && state.berlin.id === p.id; }
+  function routeBerlin(p) {
+    var kids = p.id === "kids";
+    if (inBerlin(p)) {
+      updateDots(); modalProgName.textContent = p.title;
+      if (state.step <= 3) { state.step = 2; return kids ? bKidsDates(p) : bDnDates(p); }
+      if (state.step === 4) return kids ? bKidsDetails(p) : bDnDetails(p);
+      return _renderStep();                       // 5 payment, 6 receipt, 7 confirm
+    }
+    if (!kids && state.step === 1) { updateDots(); modalProgName.textContent = p.title; return dnStep1(p); }
+    _renderStep();
+    if (kids && state.step === 1) decorateKidsStep1();
+  }
+
+  // Leaving Berlin (choosing a Cairo location) restores the site's own settings
+  var _selLoc = window.selectLocationStep;
+  window.selectLocationStep = function (loc) {
+    var p = getProgram(state.programId);
+    if (p && (p.id === "kids" || p.id === "couples")) {
+      if (loc === CFG.kids.label || loc === CFG.dn.label) { startBerlin(p); return; }
+      leaveBerlin(p);
+    }
+    _selLoc(loc);
+  };
+  function leaveBerlin(p) {
+    if (!state.berlin) return;
+    state.berlin = null; state.currency = p.eurOnly ? "EUR" : "EGP"; state.form.sessions = freshForm().sessions;
+    state.requestMode = !hasAnyAvailability(p); state.selectedDateStr = null; state.selectedSlot = null;
+  }
+  function startBerlin(p) {
+    var kids = p.id === "kids";
+    state.berlin = { id: p.id, pkg: null, n: 1, total: 0 };
+    state.currency = "EUR"; state.requestMode = false; state.waitlistMode = false;
+    state.selectedLocation = kids ? KIDS_FULL : DN_FULL; state.selectedDateStr = null; state.selectedSlot = null; state.step = 2;
+    renderStep();
+  }
+  // Berlin is EUR only and priced per package / per couple
+  var _curr = window.programCurrencies;
+  window.programCurrencies = function (program) { return (state.berlin && program && state.berlin.id === program.id) ? ["EUR"] : _curr(program); };
+  var _fee = window.feeInCurrency;
+  window.feeInCurrency = function (program, currency) { return (state.berlin && program && state.berlin.id === program.id && currency === "EUR") ? state.berlin.total : _fee(program, currency); };
+
+  // ----- Kids: step 1 decoration (overview on top, wording per the brief) -----
+  function decorateKidsStep1() {
+    var h = modalBody.querySelectorAll(".booking-mode-card h5"); if (h[0] && /Join Existing Group/.test(h[0].textContent)) h[0].textContent = "Join a Group Session";
+    if (state.bookingMode === "private") {
+      var f = modalBody.querySelector(".field");
+      if (f) f.insertAdjacentHTML("afterend", '<p class="w-note" style="margin:-4px 0 12px;">Berlin private sessions: price upon request. We will confirm the details with you.</p>');
+      return;
+    }
+    modalBody.insertAdjacentHTML("afterbegin",
+      '<div class="w-tag">Learn Chess. Think Strategically. Build Confidence.</div>' +
+      '<p class="w-intro">An interactive chess program combining practical chess training with cognitive skills development. Through guided exercises, games, and strategic challenges, children explore concentration, decision-making, problem-solving, and emotional regulation. Suitable for beginners and developing players.</p>');
+  }
+
+  // ----- Date Night: step 1 = overview + choose location -----
+  function dnStep1(p) {
+    modalTitle.textContent = "Chess Date Night";
+    var sel = state.selectedLocation;
+    var cards = p.locations.map(function (l) {
+      var isB = l === CFG.dn.label;
+      return '<div class="method-card ' + (sel === l ? "active" : "") + '" onclick="tybPickDnLocation(\'' + l.replace(/'/g, "\\'") + '\')"><h5>' + esc(isB ? CFG.dn.venue : l) + "</h5>" + (isB ? '<p style="margin:2px 0 0;font-size:12.5px;color:#6b5f52;">' + esc(CFG.dn.address) + " · €" + CFG.dn.price + " / Couple</p>" : "") + "</div>";
+    }).join("");
+    modalBody.innerHTML =
+      '<div class="w-tag">Two Minds. One Board. A Different Kind of Date.</div>' +
+      '<p class="w-intro">Step away from your usual routine and experience an interactive chess date designed for couples. Explore communication, collaboration, strategy, and decision-making through playful chess challenges and meaningful conversations. No previous chess experience required.</p>' +
+      '<div class="w-facts"><div class="w-fact wide"><span>Berlin</span><b>€' + CFG.dn.price + " / Couple | 60 Minutes</b><br>Price includes two participants</div></div>" +
+      '<div class="w-h">Choose location</div><div class="location-picker">' + cards + "</div>" +
+      '<div class="w-alt"><div class="w-alt-h">Looking for another date?</div><div class="w-alt-p">Private experiences can also be arranged by agreement. ' +
+      '<a href="#contact" class="w-alt-link" onclick="tybContact(\'couples\'); return false;">Get in Touch →</a></div></div>';
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="closeModal()">Cancel</button>' +
+      '<button class="btn btn-primary" ' + (sel ? "" : "disabled") + ' onclick="tybDnContinue()">Continue</button>';
+  }
+  window.tybPickDnLocation = function (l) {
+    var p = getProgram("couples");
+    if (l !== CFG.dn.label) leaveBerlin(p);
+    state.bookingMode = "group"; state.selectedLocation = l; state.selectedDateStr = null; state.selectedSlot = null; renderStep();
+  };
+  window.tybDnContinue = function () {
+    var p = getProgram("couples");
+    if (state.selectedLocation === CFG.dn.label) { startBerlin(p); return; }
+    goToStep(2);                                      // existing Cairo flow, unchanged
+  };
+
+  // Get in Touch (existing contact section), with the program carried in the message
+  window.tybContact = function (id) {
+    var what = id === "couples" ? "Chess Date Night — another date or a private experience" : "Chess for Kids & Teens";
+    closeModal();
+    goToProgramEnquiry("General question");
+    var corp = document.getElementById("corporateFields"); if (corp) corp.style.display = "none";
+    var m = document.getElementById("cMessage"); if (m) m.value = "[Inquiry] " + what + "\n\nMy details / questions:\n";
+  };
+
+  // ---------- Berlin: Chess for Kids & Teens (date, time and package) ----------
+  function venueBox(name, addr) { return '<div class="w-fact wide" style="margin-bottom:12px;"><span>Location</span><b>' + esc(name) + "</b><br>" + esc(addr) + "</div>"; }
+  function bKidsDates(p) {
+    var B = state.berlin, K2 = CFG.kids; modalTitle.textContent = "Berlin group session";
+    var pk = function (key, name, sub, price) {
+      return '<button type="button" class="w-date ' + (B.pkg === key ? "sel" : "") + '" onclick="tybKidsPkg(\'' + key + '\')"><span><b>' + name + "</b><small>" + sub + '</small></span><span class="w-price">€' + price + " <i>per child</i></span></button>";
+    };
+    var dates = kidsDates().map(function (ds) {
+      var sl = kidsSlots(ds), anyOk = sl.some(function (s) { return kidsStatus(ds, s).ok; });
+      return '<button type="button" class="w-date ' + (B.date === ds ? "sel " : "") + (anyOk ? "" : "off") + '" ' + (anyOk ? 'onclick="tybKidsDate(\'' + ds + '\')"' : "disabled") + "><span><b>" + niceLong(ds) + "</b><small>" + sl.map(shortSlot).join(" · ") + "</small></span>" + (anyOk ? "" : '<span class="w-st no">Unavailable</span>') + "</button>";
+    }).join("");
+    var slots = "";
+    if (B.date) {
+      slots = '<div class="w-h">Select your time</div>' + kidsSlots(B.date).map(function (s) {
+        var st = kidsStatus(B.date, s);
+        return '<button type="button" class="w-date ' + (B.slot === s ? "sel " : "") + (st.ok ? "" : "off") + '" ' + (st.ok ? 'onclick="tybKidsSlot(\'' + s + '\')"' : "disabled") + "><span><b>" + esc(shortSlot(s)) + '</b><small>60 minutes</small></span><span class="w-st ' + st.cls + '">' + st.label + "</span></button>";
+      }).join("");
+    }
+    var nd = kidsDates().filter(function (ds) { return kidsSlots(ds).some(function (s) { return kidsStatus(ds, s).ok; }); }).length;
+    var packNote = B.pkg === "four" ? '<div class="w-warn">You pay for 4 sessions up front (€' + K2.four + ' per child) and book the first one now. The other 3 sessions stay on your package and can be scheduled on future Berlin dates within the booking period — you are not charged again. Berlin dates are currently open through 5 November (' + nd + (nd === 1 ? " date" : " dates") + ' left); if fewer than four dates are available, we will arrange the remaining sessions with you.</div>' : "";
+    modalBody.innerHTML = venueBox(K2.venue, K2.address) +
+      '<div class="w-h">Choose your package</div>' + pk("single", "Single Session", "1 × 60 minutes", K2.single) + pk("four", "4-Session Package", "4 × 60 minutes", K2.four) + packNote +
+      '<div class="w-h">Select your date</div>' + (dates || '<p class="w-note">No Berlin dates are available at the moment.</p>') + slots +
+      '<p class="w-note">Group sessions: maximum ' + K2.capacity + " children per session. Fridays and Sundays through 5 November 2026.</p>";
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="tybBerlinBack()">Back</button><button class="btn btn-primary" ' + (B.pkg && B.date && B.slot ? 'onclick="tybKidsGo()"' : "disabled") + ">Continue</button>";
+  }
+  window.tybKidsPkg = function (k) { state.berlin.pkg = k; renderStep(); };
+  window.tybKidsDate = function (ds) { state.berlin.date = ds; state.berlin.slot = null; state.selectedDateStr = ds; state.selectedSlot = null; renderStep(); };
+  window.tybKidsSlot = function (s) { if (!kidsStatus(state.berlin.date, s).ok) return; state.berlin.slot = s; state.selectedSlot = s; renderStep(); };
+  window.tybKidsGo = function () { state.berlin.n = 1; goToStep(4); };
+
+  function kidsTotal() { var B = state.berlin; return (B.pkg === "four" ? CFG.kids.four : CFG.kids.single) * B.n; }
+  function kidsSummary() {
+    var B = state.berlin, four = B.pkg === "four";
+    return '<div class="summary-box" id="bSummary">' +
+      '<div class="row"><span>Program</span><b>Chess for Kids &amp; Teens</b></div>' +
+      '<div class="row"><span>Location</span><b style="text-align:right">' + esc(CFG.kids.venue) + "<br>" + esc(CFG.kids.address) + "</b></div>" +
+      '<div class="row"><span>Date</span><b>' + niceLong(B.date) + "</b></div>" +
+      '<div class="row"><span>Time</span><b>' + esc(shortSlot(B.slot)) + "</b></div>" +
+      '<div class="row"><span>Duration</span><b>60 minutes</b></div>' +
+      '<div class="row"><span>Package</span><b>' + (four ? "4-Session Package" : "Single Session") + "</b></div>" +
+      (four ? '<div class="row"><span>Sessions</span><b>4 prepaid · 1 booked now · 3 remaining</b></div>' : "") +
+      '<div class="row"><span>Children</span><b id="bSumN">' + B.n + "</b></div>" +
+      '<div class="row"><span>Total</span><b id="bSumTotal">€' + kidsTotal() + "</b></div></div>";
+  }
+  function bKidsDetails(p) {
+    var B = state.berlin, f = state.form; modalTitle.textContent = "Your details";
+    var max = Math.min(CFG.kids.capacity, kidsLeft(B.date, B.slot)); if (B.n > max) B.n = Math.max(1, max);
+    modalBody.innerHTML = kidsSummary() +
+      '<div class="field" style="margin-bottom:12px;"><label>Parent / guardian name</label><input type="text" id="bParent" autocomplete="name" value="' + esc(f.contactName) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>Child’s full name (all children, if more than one)</label><input type="text" id="bChild" value="' + esc(f.participantName) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>Child’s age (or ages)</label><input type="text" id="bAge" inputmode="numeric" value="' + esc(f.participantAge) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>Email address</label><input type="email" id="bEmail" autocomplete="email" value="' + esc(f.email) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>WhatsApp number</label><input type="tel" id="bWhats" autocomplete="tel" value="' + esc(f.phone) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>Number of children (€' + (B.pkg === "four" ? CFG.kids.four : CFG.kids.single) + " each, " + max + (max === 1 ? " place" : " places") + ' left)</label>' +
+        '<div class="w-qty"><button type="button" aria-label="Fewer children" onclick="tybQty(-1)">−</button><b id="bQty">' + B.n + '</b><button type="button" aria-label="More children" onclick="tybQty(1)">+</button></div></div>' +
+      '<div class="field" style="margin-bottom:6px;"><label>Note (optional)</label><textarea id="bNote" rows="2">' + esc(state.berlinNote || "") + "</textarea></div>" +
+      '<p class="w-note">Your place is only confirmed after our team has verified your payment.</p><p id="bMsg" style="font-size:12.5px;color:#8a3d0c;font-family:var(--mono);margin-top:10px;"></p>';
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="tybKidsSave(true)">Back</button><button class="btn btn-primary" onclick="tybKidsSave(false)">Continue to payment</button>';
+  }
+  function grab() {
+    var g = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : null; }, f = state.form, v;
+    if ((v = g("bParent")) !== null) f.contactName = v; if ((v = g("bChild")) !== null) f.participantName = v; if ((v = g("bAge")) !== null) f.participantAge = v;
+    if ((v = g("bEmail")) !== null) f.email = v; if ((v = g("bWhats")) !== null) f.phone = v; if ((v = g("bNote")) !== null) state.berlinNote = v;
+  }
+  window.tybQty = function (d) {
+    var B = state.berlin, max = Math.min(CFG.kids.capacity, kidsLeft(B.date, B.slot));
+    B.n = Math.max(1, Math.min(max, B.n + d));
+    document.getElementById("bQty").textContent = B.n; document.getElementById("bSumN").textContent = B.n; document.getElementById("bSumTotal").textContent = "€" + kidsTotal();
+  };
+  window.tybKidsSave = function (back) {
+    grab(); var B = state.berlin, f = state.form;
+    if (back) { goToStep(2); return; }
+    var miss = [], msg = document.getElementById("bMsg");
+    if (!f.contactName) miss.push("the parent/guardian name"); if (!f.participantName) miss.push("the child's name"); if (!f.participantAge) miss.push("the child's age");
+    if (!/^\S+@\S+\.\S+$/.test(f.email || "")) miss.push("a valid email address"); if ((f.phone || "").replace(/\D/g, "").length < 6) miss.push("a WhatsApp number");
+    if (miss.length) { msg.textContent = "Please add " + miss.join(", ") + "."; return; }
+    if (!kidsStatus(B.date, B.slot).ok || kidsLeft(B.date, B.slot) < B.n) {      // re-check right before payment
+      msg.textContent = "Sorry, that session is no longer available for that many children. Please choose another."; B.slot = null; state.selectedSlot = null; setTimeout(function () { goToStep(2); }, 1400); return;
+    }
+    var four = B.pkg === "four"; B.total = kidsTotal(); state.form.sessions = four ? "4" : "1";
+    state.form.note = (state.berlinNote ? state.berlinNote + "\n\n" : "") + "[Chess for Kids & Teens — Berlin]\nVenue: " + KIDS_FULL + "\nSession: " + B.date + " " + B.slot + " (60 minutes)\nPackage: " + (four ? "4-Session Package (4 prepaid; 1 booked now; 3 remaining)" : "Single Session") +
+      "\nChildren: " + B.n + "\nPrice per child: EUR " + (four ? CFG.kids.four : CFG.kids.single) + "\nTotal: EUR " + B.total + "\nParent/guardian: " + f.contactName + "\nWhatsApp: " + f.phone;
+    goToStep(5);
+  };
+
+  // ---------- Berlin: Chess Date Night (date and time) ----------
+  function bDnDates(p) {
+    var B = state.berlin, D2 = CFG.dn; modalTitle.textContent = "Select date & time";
+    var dates = dnDates().filter(function (ds) { return dnSlots(ds).length; }).map(function (ds) {
+      var sl = dnSlots(ds), anyOk = sl.some(function (s) { return dnStatus(ds, s).ok; });
+      return '<button type="button" class="w-date ' + (B.date === ds ? "sel " : "") + (anyOk ? "" : "off") + '" ' + (anyOk ? 'onclick="tybDnDate(\'' + ds + '\')"' : "disabled") + "><span><b>" + niceLong(ds) + "</b><small>" + sl.map(shortSlot).join(" · ") + "</small></span>" + (anyOk ? "" : '<span class="w-st no">Unavailable</span>') + "</button>";
+    }).join("");
+    var slots = "";
+    if (B.date) {
+      slots = '<div class="w-h">Select your time</div>' + dnSlots(B.date).map(function (s) {
+        var st = dnStatus(B.date, s);
+        return '<button type="button" class="w-date ' + (B.slot === s ? "sel " : "") + (st.ok ? "" : "off") + '" ' + (st.ok ? 'onclick="tybDnSlot(\'' + s + '\')"' : "disabled") + "><span><b>" + esc(shortSlot(s)) + '</b><small>60 minutes</small></span><span class="w-st ' + st.cls + '">' + st.label + "</span></button>";
+      }).join("");
+    }
+    modalBody.innerHTML = venueBox(D2.venue, D2.address) +
+      '<div class="w-fact wide" style="margin-bottom:12px;"><span>Price</span><b>€' + D2.price + " / Couple | 60 Minutes</b></div>" +
+      '<div class="w-h">Select your date</div>' + (dates || '<p class="w-note">No Berlin dates are available at the moment.</p>') + slots;
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="tybBerlinBack()">Back</button><button class="btn btn-primary" ' + (B.date && B.slot ? 'onclick="goToStep(4)"' : "disabled") + ">Continue</button>";
+  }
+  window.tybDnDate = function (ds) {
+    var B = state.berlin; B.date = ds; B.slot = null; state.selectedDateStr = ds; state.selectedSlot = null;
+    var ok = dnSlots(ds).filter(function (s) { return dnStatus(ds, s).ok; });
+    if (dnSlots(ds).length === 1 && ok.length === 1) { B.slot = ok[0]; state.selectedSlot = ok[0]; }   // one possible time: pick it for them
+    renderStep();
+  };
+  window.tybDnSlot = function (s) { if (!dnStatus(state.berlin.date, s).ok) return; state.berlin.slot = s; state.selectedSlot = s; renderStep(); };
+  function bDnDetails(p) {
+    var B = state.berlin, f = state.form; modalTitle.textContent = "Your details";
+    modalBody.innerHTML =
+      '<div class="summary-box"><div class="row"><span>Program</span><b>Chess Date Night</b></div>' +
+      '<div class="row"><span>Location</span><b style="text-align:right">' + esc(CFG.dn.venue) + "<br>" + esc(CFG.dn.address) + "</b></div>" +
+      '<div class="row"><span>Date</span><b>' + niceLong(B.date) + "</b></div>" +
+      '<div class="row"><span>Time</span><b>' + esc(shortSlot(B.slot)) + "</b></div>" +
+      '<div class="row"><span>Duration</span><b>60 minutes</b></div><div class="row"><span>Participants</span><b>2</b></div>' +
+      '<div class="row"><span>Total</span><b>€' + CFG.dn.price + "</b></div></div>" +
+      '<div class="field" style="margin-bottom:12px;"><label>Main participant’s full name</label><input type="text" id="dName" autocomplete="name" value="' + esc(f.participantName) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>Email address</label><input type="email" id="dEmail" autocomplete="email" value="' + esc(f.email) + '"></div>' +
+      '<div class="field" style="margin-bottom:12px;"><label>WhatsApp number</label><input type="tel" id="dWhats" autocomplete="tel" value="' + esc(f.phone) + '"></div>' +
+      '<div class="field" style="margin-bottom:6px;"><label>Second participant’s name</label><input type="text" id="dSecond" value="' + esc(B.second || "") + '"></div>' +
+      '<p class="w-note">Your booking is only confirmed after our team has verified your payment.</p><p id="dMsg" style="font-size:12.5px;color:#8a3d0c;font-family:var(--mono);margin-top:10px;"></p>';
+    modalFoot.innerHTML = '<button class="btn btn-outline" onclick="tybDnSave(true)">Back</button><button class="btn btn-primary" onclick="tybDnSave(false)">Continue to payment</button>';
+  }
+  window.tybDnSave = function (back) {
+    var g = function (id) { var e = document.getElementById(id); return e ? e.value.trim() : ""; }, B = state.berlin, f = state.form;
+    f.participantName = g("dName"); f.email = g("dEmail"); f.phone = g("dWhats"); B.second = g("dSecond"); f.participantAge = ""; f.contactName = "";
+    if (back) { goToStep(2); return; }
+    var miss = [], msg = document.getElementById("dMsg");
+    if (!f.participantName) miss.push("the main participant's name"); if (!/^\S+@\S+\.\S+$/.test(f.email)) miss.push("a valid email address");
+    if (f.phone.replace(/\D/g, "").length < 6) miss.push("a WhatsApp number"); if (!B.second) miss.push("the second participant's name");
+    if (miss.length) { msg.textContent = "Please add " + miss.join(", ") + "."; return; }
+    if (!dnStatus(B.date, B.slot).ok) { msg.textContent = "Sorry, that time is no longer available. Please choose another."; B.slot = null; state.selectedSlot = null; setTimeout(function () { goToStep(2); }, 1400); return; }
+    B.total = CFG.dn.price; state.form.sessions = "1";
+    state.form.note = "[Chess Date Night — Berlin]\nVenue: " + DN_FULL + "\nSession: " + B.date + " " + B.slot + " (60 minutes)\nParticipants: 2 (" + f.participantName + " & " + B.second + ")\nTotal: EUR " + B.total + " per couple\nWhatsApp: " + f.phone;
+    goToStep(5);
+  };
+
+  // ---------- Payment / receipt / confirmation: the site's own steps, plus Berlin rows and clickable pay options ----------
+  window.tybSetMethod = function (label) {
+    state.method = label;
+    document.querySelectorAll(".pay-tag-select").forEach(function (t) { t.classList.toggle("active", t.textContent.trim() === label); });
+    document.querySelectorAll(".w-pay").forEach(function (r) { r.classList.toggle("active", r.getAttribute("data-m") === label); });
+  };
+  function addBerlinRows(isPayment, isDone) {
+    var B = state.berlin, kids = B.id === "kids", box = modalBody.querySelector(".summary-box"); if (!box) return;
+    var rows = '<div class="row"><span>Duration</span><b>60 minutes</b></div>';
+    if (kids) {
+      var four = B.pkg === "four";
+      rows += '<div class="row"><span>Package</span><b>' + (four ? "4-Session Package" : "Single Session") + "</b></div>" +
+        '<div class="row"><span>Children</span><b>' + B.n + "</b></div>" +
+        '<div class="row"><span>Price per child</span><b>€' + (four ? CFG.kids.four : CFG.kids.single) + "</b></div>" +
+        (four ? '<div class="row"><span>Sessions remaining</span><b>3 (after this one)</b></div>' : "");
+    } else rows += '<div class="row"><span>Participants</span><b>2 (' + esc(state.form.participantName) + " &amp; " + esc(B.second) + ")</b></div>";
+    box.insertAdjacentHTML("beforeend", rows);
+    if (isDone && kids && B.pkg === "four") {
+      box.insertAdjacentHTML("afterend", '<div class="notice" style="text-align:left;margin-top:12px;"><b>Your 4-Session Package:</b> 4 sessions prepaid · 1 booked now · 3 remaining. Quote your reference above to schedule the remaining sessions on future Berlin dates within the booking period — you will not be charged again. We will confirm available dates with you.</div>');
+    }
+    if (!isPayment) return;
+    var lbl = modalBody.querySelector(".fee-label"); if (lbl) lbl.textContent = "Total due";
+    var row = modalBody.querySelector(".tourn-payment-row"); if (!row) return;
+    row.insertAdjacentHTML("afterend", paymentMethodsFor("EUR").map(function (m) {
+      return '<div class="w-pay ' + (state.method === m.label ? "active" : "") + '" data-m="' + m.label + '" onclick="tybSetMethod(\'' + m.label + '\')"><span>' + m.label + "</span>" + payHereHtml(m) + "</div>";
+    }).join("") + '<p class="w-note">Tap <b>Pay Here</b> (Revolut) or <b>Copy PayPal Account</b> to pay the total above. Then press <b>Continue</b> and upload your payment confirmation. Your booking is <b>not confirmed</b> until our team has verified your payment — opening a payment link or uploading a screenshot alone does not confirm it.</p>');
+  }
+  ["renderStepPayment", "renderStepConfirm", "renderStepDone"].forEach(function (name) {
+    var orig = window[name];
+    window[name] = function (program) {
+      orig(program);
+      if (program && state.berlin && state.berlin.id === program.id) {
+        addBerlinRows(name === "renderStepPayment", name === "renderStepDone");
+        if (name === "renderStepDone") {   // block these places/times for the rest of this page view, across all programs
+          var B = state.berlin, k = B.date + "|" + B.slot;
+          if (B.id === "kids") visitKids[k] = (visitKids[k] || 0) + B.n; else visitDn[k] = true;
+          visitBusy.push({ ds: B.date, slot: B.slot, who: B.id === "kids" ? "kids" : "couples" });
+        }
+      }
+    };
+  });
+
+  // ---------- Share / Copy Link: one header button for all four programs ----------
+  var LINKS = { empowering: "empowering-women", kids: "chess-for-kids", couples: "chess-date-night", coaching_adults: "book-coaching" };
+  var NAMES = { empowering: "Empowering Women", kids: "Chess for Kids & Teens", couples: "Chess Date Night", coaching_adults: "Life Coaching & Behavioral Development" };
+  function linkFor(id) { return location.origin + location.pathname + "#" + LINKS[id]; }
+  function syncShare() {
+    var b = document.getElementById("womenCopyBtn"); if (!b) return;
+    b.style.display = LINKS[state.programId] ? "" : "none";
+    var m = document.getElementById("tybShareMenu"); if (m) m.style.display = "none";
+  }
+  function showCopied() {
+    var pop = document.getElementById("womenCopied"); if (!pop) return;
+    pop.textContent = "Link copied!"; pop.classList.add("show"); clearTimeout(pop._t); pop._t = setTimeout(function () { pop.classList.remove("show"); }, 2200);
+  }
+  function copyNow(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(showCopied, function () { window.prompt("Copy this link:", url); });
+    else window.prompt("Copy this link:", url);
+  }
+  var wrap = document.querySelector(".w-head-actions");
+  if (wrap && !document.getElementById("tybShareMenu")) {
+    var menu = document.createElement("div"); menu.id = "tybShareMenu"; menu.className = "w-share-menu"; menu.style.display = "none";
+    menu.innerHTML = '<button type="button" onclick="tybShareNative()">Share…</button><button type="button" onclick="tybShareCopy()">Copy link</button>';
+    wrap.appendChild(menu);
+  }
+  window.womenCopyLink = function () {
+    var id = state.programId, url = linkFor(id), m = document.getElementById("tybShareMenu");
+    // phones/tablets that support the native share sheet: offer "Share…" and a visible "Copy link"
+    if (navigator.share && window.matchMedia && matchMedia("(pointer: coarse)").matches && m) { m.style.display = m.style.display === "none" ? "" : "none"; return; }
+    copyNow(url);
+  };
+  window.tybShareCopy = function () { var m = document.getElementById("tybShareMenu"); if (m) m.style.display = "none"; copyNow(linkFor(state.programId)); };
+  window.tybShareNative = function () {
+    var id = state.programId, m = document.getElementById("tybShareMenu"); if (m) m.style.display = "none";
+    navigator.share({ title: NAMES[id] + " — Train Your Brain for Agility", text: "Book: " + NAMES[id], url: linkFor(id) }).catch(function () {});
+  };
+
+  // ---------- Direct links (each opens only its own program) ----------
+  var OPENERS = { "chess-for-kids": function () { openBooking("kids"); }, "chess-date-night": function () { openBooking("couples"); } };
+  var OWNER = { "chess-for-kids": "kids", "chess-date-night": "couples" };
+  function wanted() {
+    var h = (location.hash || "").replace(/^#/, "").toLowerCase(), path = (location.pathname || "").replace(/\/+$/, "").toLowerCase();
+    var q = (new URLSearchParams(location.search).get("book") || "").toLowerCase();
+    return Object.keys(OPENERS).filter(function (k) { return h === k || q === k || path.slice(-(k.length + 1)) === "/" + k; })[0];
+  }
+  function linkCheck() {
+    var k = wanted(); if (!k) return;
+    if (overlay.classList.contains("open") && state.programId === OWNER[k]) return;
+    OPENERS[k]();
+  }
+  window.addEventListener("hashchange", linkCheck);
+  linkCheck();
+  syncShare();   // a coaching/Empowering link that opened earlier on page load gets its header button too
 })();
 </script>
 </body>
