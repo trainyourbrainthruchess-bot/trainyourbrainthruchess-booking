@@ -1432,6 +1432,19 @@ header.site .nav-links{flex:1 1 auto;justify-content:center;}
 }
 @media(max-width:900px){.hero-grid.hero-grid-feature{grid-template-columns:1fr;gap:40px;}}
 @media(max-width:520px){.hero-video{max-width:min(300px,100%);}.hero-feature .hero-feature-cta{width:100%;}}
+/* hero video: inline autoplay preview layered over the existing poster button (the button is the fallback) */
+.hero-video{position:relative;}
+.hero-video .hero-video-inline{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b1f1b;opacity:0;transition:opacity .25s ease;pointer-events:none;}
+.hero-video.is-live .hero-video-inline{opacity:1;}
+.hero-video.is-live .hero-video-open{visibility:hidden;}
+.hero-video-tools{position:absolute;left:8px;right:8px;bottom:8px;display:flex;justify-content:space-between;gap:8px;z-index:2;}
+.hero-video-tools[hidden]{display:none;}
+.hero-video-tool{min-height:44px;min-width:44px;padding:0 14px;border:0;border-radius:999px;background:rgba(11,31,27,.78);color:#fff;font:600 12.5px/1 var(--mono,monospace);letter-spacing:.04em;cursor:pointer;backdrop-filter:blur(4px);-webkit-tap-highlight-color:transparent;}
+.hero-video-tool:hover,.hero-video-tool:focus-visible{background:var(--terracotta);}
+.hero-video-tool:focus-visible{outline:3px solid var(--gold-soft);outline-offset:2px;}
+.hero-video-msg{position:absolute;left:0;right:0;bottom:0;margin:0;padding:34px 14px 14px;background:linear-gradient(to top,rgba(5,18,15,.92),rgba(5,18,15,0));color:#fff;font-size:13px;line-height:1.4;text-align:center;pointer-events:none;z-index:2;}
+.hero-video-msg[hidden]{display:none;}
+@media(prefers-reduced-motion:reduce){.hero-video .hero-video-inline{transition:none;}}
 
 /* ===== Refinements: programs ===== */
 #programs .section-head .eyebrow{font-size:clamp(22px,2.5vw,31px);letter-spacing:.12em;line-height:1.15;}
@@ -1573,6 +1586,14 @@ header.site .nav-links{flex:1 1 auto;justify-content:center;}
           <span class="hero-video-play" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
           <span class="hero-video-time" aria-hidden="true">0:59</span>
         </button>
+        <video id="heroVideoInline" class="hero-video-inline" autoplay muted loop playsinline preload="metadata" disablepictureinpicture tabindex="-1" aria-label="What Kind of Leader Are You? preview (silent)">
+          <source src="media/what-kind-of-leader-are-you.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-tools" hidden>
+          <button type="button" class="hero-video-tool" id="heroVideoPause" aria-label="Pause video">&#10074;&#10074; Pause</button>
+          <button type="button" class="hero-video-tool" id="heroVideoSound" aria-label="Watch with sound in a larger player">&#128266; Sound</button>
+        </div>
+        <p class="hero-video-msg" id="heroVideoMsg" role="status" hidden>The video couldn't load. Tap the picture to open the full player.</p>
       </div>
       <p class="hero-feature-desc">An experiential leadership development programme inspired by the founder's personal journey.</p>
       <button type="button" class="btn btn-primary hero-feature-cta" onclick="beyondDiscoverySession()">Schedule an Executive Discovery Session</button>
@@ -7559,6 +7580,40 @@ fypInitAdminBar();
     if(lastFocus&&lastFocus.focus) lastFocus.focus();
   };
   document.addEventListener("keydown",function(e){ if(!modal.hidden&&(e.key==="Escape"||e.key==="Esc")) closeHeroVideo(); });
+})();
+</script>
+<script>
+/* Hero video: silent, looping autoplay preview. Falls back to the poster + play button (opens the full player) if it cannot play. */
+(function(){
+  var box=document.querySelector(".hero-video"), v=document.getElementById("heroVideoInline");
+  if(!box||!v) return;
+  var tools=box.querySelector(".hero-video-tools"), msg=document.getElementById("heroVideoMsg"),
+      pauseBtn=document.getElementById("heroVideoPause"), soundBtn=document.getElementById("heroVideoSound"),
+      src=v.querySelector("source"), userPaused=false, failed=false, modalOpen=false, visible=true;   // visible kept for future use
+  v.muted=true; v.defaultMuted=true; v.setAttribute("muted","");
+  function setPauseLabel(){ var p=v.paused; pauseBtn.innerHTML=p?"&#9654; Play":"&#10074;&#10074; Pause"; pauseBtn.setAttribute("aria-label",p?"Play video":"Pause video"); }
+  function fail(){ failed=true; box.classList.remove("is-live"); tools.hidden=true; msg.hidden=false; }
+  function tryPlay(){ if(failed||userPaused||modalOpen||!visible) return; var p=v.play(); if(p&&p.catch) p.catch(function(){ /* autoplay blocked (e.g. battery saver): the poster + play button stay available */ }); }
+  function live(){ if(v.paused||v.readyState<2) return; failed=false; msg.hidden=true; box.classList.add("is-live"); tools.hidden=false; setPauseLabel(); }
+  v.addEventListener("playing",live); v.addEventListener("timeupdate",live);
+  v.addEventListener("pause",setPauseLabel);
+  v.addEventListener("error",fail);
+  if(src) src.addEventListener("error",fail);              // no playable source (wrong path, unsupported codec)
+  v.addEventListener("canplay",tryPlay);
+  pauseBtn.addEventListener("click",function(){ if(v.paused){ userPaused=false; v.play(); } else { userPaused=true; v.pause(); } });
+  soundBtn.addEventListener("click",function(){ if(window.openHeroVideo) openHeroVideo(); });
+  // the full player takes over while it is open
+  var _open=window.openHeroVideo, _close=window.closeHeroVideo;
+  if(_open) window.openHeroVideo=function(){ modalOpen=true; v.pause(); return _open.apply(this,arguments); };
+  if(_close) window.closeHeroVideo=function(){ var r=_close.apply(this,arguments); modalOpen=false; tryPlay(); return r; };
+  function noSource(){ if(!box.classList.contains("is-live") && (v.error || v.networkState===3)) fail(); }   // 3 = NETWORK_NO_SOURCE: wrong path or unsupported codec
+  noSource(); window.addEventListener("load",function(){ noSource(); setTimeout(noSource,1500); });
+  // browsers that block autoplay until the first touch/click
+  function kick(){ tryPlay(); }
+  document.addEventListener("touchend",kick,{once:true,passive:true});
+  document.addEventListener("click",kick,{once:true});
+  document.addEventListener("visibilitychange",function(){ if(!document.hidden) tryPlay(); });
+  tryPlay(); live();
 })();
 </script>
 </body>
